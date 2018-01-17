@@ -1,0 +1,105 @@
+html{
+    direction: rtl;
+    text-align: right;
+}
+body{
+    background: #fff;
+    font-size: 2rem;
+}
+
+html {
+    direction: rtl;
+    text-align: right;
+    font-size: 62.5%;
+}
+html,body, #root {
+    height: 100%;
+    font-family: 'almoni-dl';
+
+}
+
+
+.main-list-wrp{
+    overflow: hidden;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 170px;
+}
+.main-list li{
+    margin-left: 20px;
+}
+.main-list li:last-child{
+    margin-left: 0px;
+}
+ .main-list li a{
+     color: #777;
+     text-decoration: none;
+ }
+
+
+.logo img{
+    animation: fadeIn 1s infinite alternate;
+}
+@keyframes fadeIn {
+    from { opacity: 0.5; }
+}
+
+.main-nav-list-wrp{
+    position: absolute;
+    top: 17px;
+    right: 170px;
+}
+.main-nav{
+     position: relative;
+}
+.main-nav-wrp{
+    position: relative;
+
+}
+ul.ham{
+    margin-top: 8px;
+}
+.ham-icon-holder {
+    width: 20px;
+    height: 40px;
+    left: 24px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    cursor: pointer;
+}
+@media screen and (min-width: 640px) {
+    .ham-icon-holder {
+        /*
+        display: none;
+        */
+    }
+}
+.ham-icon-holder .ham-icon {
+    position: relative;
+    height: inherit;
+    top: 0;
+}
+.ham-icon-holder .ham-icon ul.ham {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    height: inherit;
+    top: 0%;
+    left: 0;
+    right: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: none;
+    padding: 0;
+}
+.ham-icon-holder .ham-icon ul.ham li {
+    width: 20px;
+    height: 4px;
+    background: red;
+    margin: 0;
+    display: inline-block;
+    float: right;
+    margin-bottom: 6px;
+}
