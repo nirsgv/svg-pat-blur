@@ -14,14 +14,14 @@ const StyledImgLayer = styled.img`
           sepia(${props => props.styleProps.sepia})
           saturate(${props => props.styleProps.saturate})
           contrast(${props => props.styleProps.contrast})
-          grayscale(${props => props.styleProps.grayScale})
+          grayScale(${props => props.styleProps.grayScale})
           invert(${props => props.styleProps.invert})
           hue-rotate(${props => props.styleProps.hueRotate});
     `;
 
 const Layer = (props) => (
     console.log(props),
-            <div className="imgLayer" >
+            <div className="img-wrp" >
                 <StyledImgLayer alt="berry1" styleProps={props.layerProps.stl} />
             </div>
 )

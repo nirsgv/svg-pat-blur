@@ -1,7 +1,6 @@
 import { fromJS } from 'immutable';
 import uuid from 'uuid';
-import BerryJpg from '../assets/img/berry.jpg'
-export const CHANGE_RANGE_AMOUNT = 'ranger/CHANGE_RANGE_AMOUNT'
+export const ADD_LAYER = 'layers/ADD_LAYER'
 
 
 
@@ -46,10 +45,10 @@ const initialState = {
                 grayScale: .8,
                 invert: .8,
                 hueRotate: '90deg',
-                backgroundSize: '0.75%',
+                backgroundSize: '75%',
                 backgroundBlendMode: 'exclusion',
                 mixBlendMode: 'exclusion',
-                backgroundImage: 'http://bgfons.com/uploads/strawberry/strawberry_texture2593.jpg',
+                backgroundImage: 'http://cdn-img.health.com/sites/default/files/styles/medium_16_9/public/styles/main/public/strawberry-seeds-crohns-400x400.jpg?itok=0cqj-sNb',
             }
         }
     ]
@@ -58,7 +57,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
 
-    case CHANGE_RANGE_AMOUNT:
+    case ADD_LAYER:
       return {
         ...state,
         opacityAmount: action.value
@@ -69,11 +68,11 @@ export default (state = initialState, action) => {
   }
 }
 
-export const change_range_amt = (e) => {
+export const add_layer = (e) => {
   const value = e.target.value;
   return dispatch => {
     dispatch({
-      type: CHANGE_RANGE_AMOUNT,
+      type: ADD_LAYER,
       value
     })
   }
