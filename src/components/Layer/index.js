@@ -25,12 +25,28 @@ const Layer = (props) => (
     console.log(props),
             <div className="img-wrp" >
                 <StyledImgLayer alt="berry1"
-                                //styleProps={props.layerProps.stl}
+                                styleProps={props.layerProps.stl}
                 />
             </div>
 )
+/*class Layer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    componentDidReceiveProps() {
 
-
+    }
+    render() {
+        return (
+            console.log(this.props),
+        <div className="img-wrp" >
+            <StyledImgLayer alt="berry1"
+            styleProps={this.props.layerProps.stl}
+        />
+        </div>
+    );
+    }
+}*/
 
 
 export default Layer;
