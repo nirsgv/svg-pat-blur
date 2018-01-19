@@ -18,11 +18,15 @@ const StyledImgLayer = styled.img`
           invert(${props => props.styleProps.invert})
           hue-rotate(${props => props.styleProps.hueRotate});
     `;
-
+/*const StyledImgLayer = styled.img`
+  border-color: tomato;
+    `;*/
 const Layer = (props) => (
     console.log(props),
             <div className="img-wrp" >
-                <StyledImgLayer alt="berry1" styleProps={props.layerProps.stl} />
+                <StyledImgLayer alt="berry1"
+                                //styleProps={props.layerProps.stl}
+                />
             </div>
 )
 

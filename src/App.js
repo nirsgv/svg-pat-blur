@@ -13,6 +13,10 @@ import {
 import {
     change_range_amt
 } from './modules/ranger'
+import {
+    add_layer,
+    delete_layer
+} from './modules/layers'
 const mapStateToProps = state => ({
     layers: state.layers.layers,
     count: state.counter.count,
@@ -39,10 +43,10 @@ const App = (props) => (
                 <p className=""><span>4</span></p>
             </div>
             <div className="item two">
-                <button id="plus" onClick={props.increment}>+</button>
+                <button id="plus" onClick={props.add_layer}>+</button>
             </div>
             <div className="item three">
-                <button id="minus" onClick={props.decrement}>-</button>
+                <button id="minus" onClick={props.delete_layer}>-</button>
             </div>
             <div className="item four">
                 <p>1</p><p>2</p><p>3</p>
@@ -75,6 +79,8 @@ const App = (props) => (
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+    add_layer,
+    delete_layer,
     increment,
     decrement,
     change_range_amt,

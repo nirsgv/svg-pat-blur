@@ -8,7 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
 
-    case CHANGE_RANGE_AMOUNT:
+      case CHANGE_RANGE_AMOUNT:
       return {
         ...state,
         opacityAmount: action.value
