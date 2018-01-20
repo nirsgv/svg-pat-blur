@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet';
 import {
     defaultSrcWebm
-} from '../../modules/player'
+} from '../../reducers/player'
 
 const About = props => (
   <div>

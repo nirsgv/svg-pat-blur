@@ -6,7 +6,7 @@ import CloseBtn from './CloseBtn'
 
 import {
     delete_layer
-} from '../../modules/layers'
+} from '../../reducers/layers'
 
 const mapStateToProps = state => ({
     layers: state.layers.layers

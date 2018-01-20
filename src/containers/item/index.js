@@ -10,7 +10,7 @@ import {
     defaultSrcMp4,
     playVideo,
     pauseVideo
-} from '../../modules/player'
+} from '../../reducers/player'
 
 {console.log(this)}
 

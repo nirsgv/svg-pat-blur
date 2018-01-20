@@ -9,14 +9,14 @@ import {connect} from 'react-redux'
 import {
     increment,
     decrement,
-} from './modules/counter'
+} from './reducers/counter'
 import {
     change_range_amt
-} from './modules/ranger'
+} from './reducers/ranger'
 import {
     add_layer,
     delete_layer
-} from './modules/layers'
+} from './reducers/layers'
 const mapStateToProps = state => ({
     layers: state.layers.layers,
     layerCount: state.layers.layerCount,
