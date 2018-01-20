@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
          props.layers.map((item, index, array) => {
              return (
                      <li>
-                         <Layer index={index} layerProps={item}/>
+                         <Layer layerId={props.layerId} layerProps={item}/>
                      </li>
                     )
                 }

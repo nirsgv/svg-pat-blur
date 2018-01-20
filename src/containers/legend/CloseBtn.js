@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 
 const CloseBtn = (props) => (
-    <div className="close-button-wrp" onClick={(event) => { props.delete_layer(props.index)}}>
+    <div className="close-button-wrp" onClick={(event) => { props.delete_layer(props.id)}}>
         <CloseBtnElement className="close-button-element">
             x
         </CloseBtnElement>

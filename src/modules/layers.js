@@ -7,10 +7,10 @@ export const DELETE_LAYER = 'layers/DELETE_LAYER'
 
 
 const initialState = {
-    layerCount: 0,
+    layerCount: 2,
     layers: [
         {
-            id: 1,
+            id: uuid.v4(),
             Key: uuid.v4(),
             cat: 'img',
             stl: {
@@ -30,7 +30,7 @@ const initialState = {
                 mixBlendMode: 'multiply'
             }
         }, {
-            id: 2,
+            id: uuid.v4(),
             Key: uuid.v4(),
             cat: 'svg',
             stl: {
@@ -80,7 +80,7 @@ export default (state = initialState, action) => {
 export const add_layer = () => {
     const newLayer = {
         //temp example layer
-        id: 3,
+        id: uuid.v4(),
         Key: uuid.v4(),
         cat: 'img',
         stl: {

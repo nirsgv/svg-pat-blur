@@ -25,7 +25,7 @@ const Legend = (props) => (
              return (
                         [
                             <LayerIndicatorButton index={index} layerProps={item} />,
-                            <CloseBtn index={index} delete_layer={props.delete_layer}/>
+                            <CloseBtn id={item.id} delete_layer={props.delete_layer}/>
 
                         ]
                     )
