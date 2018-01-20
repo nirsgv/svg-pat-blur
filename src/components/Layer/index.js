@@ -17,6 +17,11 @@ const StyledImgLayer = styled.img`
           grayScale(${props => props.styleProps.grayScale})
           invert(${props => props.styleProps.invert})
           hue-rotate(${props => props.styleProps.hueRotate});
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     `;
 /*const StyledImgLayer = styled.img`
   border-color: tomato;

@@ -49,8 +49,9 @@ const App = (props) => (
             </div>
 
             <div className="item three">
-                <button id="minus" onClick={(event) => { props.delete_layer();props.decrement();}}>-</button>
+                <button id="minus" onClick={(event) => { props.delete_layer((props.layers[props.layers.length-1].id));props.decrement();}}>-</button>
             </div>
+            {/*
             <div className="item four">
                 <p>1</p><p>2</p><p>3</p>
             </div>
@@ -75,7 +76,7 @@ const App = (props) => (
             <div className="item six"></div>
             <div className="item seven"></div>
             <div className="item eight"></div>
-            <div className="item nine"></div>
+            <div className="item nine"></div>*/}
         </div>
     </div>
 );

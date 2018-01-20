@@ -88,13 +88,13 @@ export const add_layer = () => {
             backgroundRepeat: 'repeat',
             backgroundImage: 'http://cdn-img.health.com/sites/default/files/styles/medium_16_9/public/styles/main/public/strawberry-seeds-crohns-400x400.jpg?itok=0cqj-sNb',
             opacity: 0.8,
-            blur: 10,
+            blur: 4,
             saturate: 5,
             contrast: 20,
-            sepia: .4,
-            grayScale: .4,
-            invert: .4,
-            hueRotate: '180deg',
+            sepia: .2,
+            grayScale: .2,
+            invert: .2,
+            hueRotate: '90deg',
             backgroundSize: '100%',
             backgroundBlendMode: 'multiply',
             mixBlendMode: 'multiply'
@@ -111,7 +111,6 @@ export const add_layer = () => {
 
 
 export const delete_layer = (x) => {
-    const fff = initialState.layerCount;
     return dispatch => {
         dispatch({
             type: DELETE_LAYER,

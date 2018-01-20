@@ -4,7 +4,7 @@
 
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
-    height: 80px;
+    height: 40px;
 }
 
 .App-header {
@@ -23,6 +23,27 @@
 }
 .legend-wrp{
     color: #333;
+    position: absolute;
+    z-index: 10;
+}
+.img-wrp{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+div.layers{
+    position: relative;
+    height: 300px;
+}
+ul.layers{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    list-style: none;
 }
 .layer-indicator-button-wrp{
     border-radius: 50%;
