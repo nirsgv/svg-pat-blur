@@ -7,6 +7,7 @@ export const DELETE_LAYER = 'layers/DELETE_LAYER'
 
 
 const initialState = {
+    layerCount: 0,
     layers: [
         {
             id: 1,
@@ -61,12 +62,14 @@ export default (state = initialState, action) => {
       case ADD_LAYER:
       return {
           ...state,
-          layers: state.layers.concat(action.newLayer)
+          layers: state.layers.concat(action.newLayer),
+          layerCount: state.layerCount+1
       };
       case DELETE_LAYER:
           return {
               ...state,
-              layers: state.layers.filter(layer => layer.id !== action.payload)
+              layers: state.layers.filter(layer => layer.id !== action.payload),
+              layerCount: state.layerCount-1
           };
     default:
       return state
@@ -107,12 +110,12 @@ export const add_layer = () => {
 };
 
 
-export const delete_layer = (id=3) => {
+export const delete_layer = (x) => {
+    const fff = initialState.layerCount;
     return dispatch => {
         dispatch({
             type: DELETE_LAYER,
-            payload: 3
+            payload: x
         })
     }
 };
-

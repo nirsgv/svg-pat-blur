@@ -21,7 +21,12 @@
 .App-intro {
     font-size: large;
 }
-
+.legend-wrp{
+    color: #333;
+}
+.layer-indicator-button-wrp{
+    border-radius: 50%;
+}
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import Layers from './containers/layers';
-import Layer from './components/Layer';
+import Legend from './containers/legend';
 import './App.css';
 import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
@@ -19,6 +19,7 @@ import {
 } from './modules/layers'
 const mapStateToProps = state => ({
     layers: state.layers.layers,
+    layerCount: state.layers.layerCount,
     count: state.counter.count,
     opacityAmount: state.ranger.opacityAmount
 });
@@ -28,6 +29,7 @@ const App = (props) => (
 
         <main>
             <Layers />
+            <Legend />
         </main>
         <header className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
@@ -36,17 +38,18 @@ const App = (props) => (
         </header>
 
         <div id="content">
-            <div className="item one">
+{/*            <div className="item one">
                 <p className=""><span>1</span></p>
                 <p className=""><span>2</span></p>
                 <p className=""><span>3</span></p>
                 <p className=""><span>4</span></p>
-            </div>
+            </div>*/}
             <div className="item two">
-                <button id="plus" onClick={props.add_layer}>+</button>
+                <button id="plus" onClick={(event) => { props.add_layer();props.increment();}}>+</button>
             </div>
+
             <div className="item three">
-                <button id="minus" onClick={props.delete_layer}>-</button>
+                <button id="minus" onClick={(event) => { props.delete_layer();props.decrement();}}>-</button>
             </div>
             <div className="item four">
                 <p>1</p><p>2</p><p>3</p>

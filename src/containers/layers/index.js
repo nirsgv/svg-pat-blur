@@ -6,7 +6,8 @@ import styled from 'styled-components'
 
 
 const mapStateToProps = state => ({
-    layers: state.layers.layers
+    layers: state.layers.layers,
+    layerCount: state.layers.layerCount
 });
 
 
@@ -18,7 +19,7 @@ const mapStateToProps = state => ({
          props.layers.map((item, index, array) => {
              return (
                      <li>
-                         <Layer layerProps={item}/>
+                         <Layer index={index} layerProps={item}/>
                      </li>
                     )
                 }
