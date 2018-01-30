@@ -6,9 +6,9 @@ import { Helmet } from 'react-helmet';
 
 import {
   increment,
-  incrementAsync,
+    fill_morning_shifts,
   decrement,
-  decrementAsync
+    fill_evening_shifts
 } from '../../reducers/counter'
 
 const Home = props => (

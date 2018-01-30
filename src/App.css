@@ -180,12 +180,12 @@ body {
 
 @media (min-width: 640px){
     .content{
-    grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         grid-template-rows:
                         minmax(100px, auto)
                         minmax(100px, auto)
                         minmax(100px, auto);
-}
+    }
 }
 .content ul{
     display: grid;
@@ -193,7 +193,7 @@ body {
     margin: 0;
     padding: 0;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: minmax(100px, auto) minmax(100px, auto) minmax(100px, auto) minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
+    grid-template-rows: 150px minmax(100px, auto) minmax(100px, auto) minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
 }
 @media (min-width: 640px){
     .content ul{
@@ -202,7 +202,7 @@ body {
         margin: 0;
         padding: 0;
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 305px auto;
+        grid-template-rows: 205px auto;
     }
 }
 .content ul li{
@@ -215,6 +215,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    color: #fff
+
 }
 ul.legend{
     background-color: #f66;

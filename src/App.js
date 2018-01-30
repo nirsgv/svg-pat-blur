@@ -4,30 +4,38 @@ import './App.css';
 import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+
+
 import {
-    increment,
-    decrement,
-} from './reducers/counter'
+    fill_morning_shifts,
+    fill_evening_shifts,
+    change_shift
+} from './reducers/shifts'
+
+
 import {
-    change_range_amt
-} from './reducers/ranger'
-import {
-    add_layer,
-    delete_layer
-} from './reducers/layers'
+    add_member
+} from './reducers/members'
+
 const mapStateToProps = state => ({
     layers: state.layers.layers,
     layerCount: state.layers.layerCount,
-    count: state.counter.count,
-    opacityAmount: state.ranger.opacityAmount
+    members: state.members.team_members,
+    shifts: state.shifts.shifts
 });
-const App = (props) => (
 
+const randomFrom = (arr) => {
+    return Math.floor(Math.random() * arr.length)
+};
+
+
+const App = (props) => (
+    console.log(props),
     <div className="App">
         <div className="container">
             <div className="content">
                 <ul className="legend">
-                    <li className="legend-item"></li>
+                    <li className="legend-item"/>
                     <li className="legend-item"><span>ראשון</span></li>
                     <li className="legend-item"><span>שני</span></li>
                     <li className="legend-item"><span>שלישי</span></li>
@@ -35,41 +43,44 @@ const App = (props) => (
                     <li className="legend-item"><span>חמישי</span></li>
                 </ul>
                 <ul className="early">
-                    <li className="early-item"><span>מוקדם</span></li>
-                    <li className="early-item"><Character /></li>
-                    <li className="early-item"><Character /></li>
-                    <li className="early-item"><Character /></li>
-                    <li className="early-item"><Character /></li>
-                    <li className="early-item"><Character /></li>
+                    <li className="early-item">
+                        <span>מוקדם</span>
+                    </li>
+                    {props.shifts.morning.map(
+                        (shift, index, array) => <li className="early-item" onClick={change_shift}>
+                            <Character shift={array[index]} members={props.members} />
+                        </li>
+                    )}
                 </ul>
                 <ul className="late">
-                    <li className="late-item"><span>מאוחר</span></li>
-                    <li className="late-item"><Character /></li>
-                    <li className="late-item"><Character /></li>
-                    <li className="late-item"><Character /></li>
-                    <li className="late-item"><Character /></li>
-                    <li className="late-item"><Character /></li>
+                    <li className="late-item">
+                        <span>מאוחר</span>
+                    </li>
+                    {props.shifts.evening.map(
+                        (shift, index, array) => <li className="late-item">
+                            <Character shift={array[index]} members={props.members} onClick={change_shift}/>
+                        </li>
+                    )}
                 </ul>
              </div>
          </div>
-        <div id="content">
+{/*        <div id="content">
             <div className="item two">
-                <button id="plus" onClick={(event) => { props.add_layer();props.increment();}}>+</button>
+                <button id="plus" onClick={(event) => { props.fill_morning_shifts();props.increment();}}>+</button>
             </div>
             <div className="item three">
-                <button id="minus" onClick={(event) => { props.delete_layer((props.layers[props.layers.length-1].id));props.decrement();}}>-</button>
+                <button id="minus" onClick={(event) => { props.fill_evening_shifts();props.decrement();}}>-</button>
             </div>
-        </div>
+        </div>*/}
     </div>
 );
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    add_layer,
-    delete_layer,
-    increment,
-    decrement,
-    change_range_amt,
+    fill_morning_shifts,
+    fill_evening_shifts,
+    change_shift,
+    add_member,
     changePage: () => push('/about-us')
 }, dispatch);
 
