@@ -2,32 +2,56 @@ import { fromJS } from 'immutable';
 import uuid from 'uuid';
 import data from '../data';
 
-export const FILL_MORNING_SHIFTS = 'shifts/FILL_MORNING_SHIFTS';
-export const FILL_EVENING_SHIFTS = 'shifts/FILL_EVENING_SHIFTS';
+export const RANDOM_ALL_AGAIN = 'shifts/RANDOM_ALL_AGAIN';
 export const CHANGE_SHIFT = 'shifts/CHANGE_SHIFT';
+export const CHANGE_SHIFT_SPECIFIC = 'shifts/CHANGE_SHIFT_SPECIFIC';
+export const CHANGE_SHIFT_RANDOM = 'shifts/CHANGE_SHIFT_RANDOM';
 
 const members = data.team_members;
+
+/**
+ *
+ * @param arr
+ * @returns {*}
+ */
 const randomFrom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-const morning = [];
-const evening = [];
+/**
+ *
+ * @param arr
+ * @param that
+ * @returns {*}
+ */
+const getRandomNotThat = ( arr, that ) => {
+    const arrWithoutThat = arr.filter( value => value !== that );
+    return randomFrom(arrWithoutThat);
+};
 
-for(let i = 0; i <= 4 ; i++ ){
-    morning[i] = randomFrom(members);
-    let newArray = members.reduce( (myArray , value) => {
-        if(value.id !== morning[i].id){
-            myArray.push( value );
-        }
-        return myArray;
-    },[]);
-    evening[i] = randomFrom(newArray);
-}
+/**
+ *
+ * @param members
+ * @returns {{morning: Array, evening: Array}}
+ */
+const getRandomShifts = (members) => {
+    const morning = [];
+    const evening = [];
+
+    for(let i = 0; i <= 4 ; i++ ){
+        morning[i] = randomFrom(members);
+        const newArray = members.reduce( (myArray , value) => {
+            if(value.id !== morning[i].id){
+                myArray.push( value );
+            }
+            return myArray;
+        },[]);
+        evening[i] = randomFrom(newArray);
+    }
+
+     return { morning , evening };
+};
 
 const initialState = {
-    shifts: {
-        morning,
-        evening
-    }
+    shifts: { ...getRandomShifts(members) }
 };
 
 export default (state = initialState, action) => {
@@ -40,53 +64,76 @@ export default (state = initialState, action) => {
               morning: action.payload
           }
       };
-      case FILL_MORNING_SHIFTS:
-      return {
-          shifts: {
-              ...(state.shifts),
-              morning: action.payload
+      case RANDOM_ALL_AGAIN:
+          return {
+              shifts: { ...getRandomShifts(members) }
+          };
+      case CHANGE_SHIFT_SPECIFIC:
+          return {
+              shifts: { ...getRandomShifts(members) }
+          };
+      case CHANGE_SHIFT_RANDOM:
+
+          console.log('fires');
+
+          const thatThatWeDontWantEvening = state.shifts.evening[action.index];
+          const thatThatWeDontWantMorning = state.shifts.morning[action.index];
+          const newMemnersArray = members.filter( (value) => ( value !== thatThatWeDontWantEvening &&
+                                                                value !== thatThatWeDontWantMorning ) );
+          const newShiftMember = randomFrom(newMemnersArray);
+
+          if(action.shiftTime === 'morning'){
+              let morning = [ ...state.shifts.morning ];
+              morning[action.index] = newShiftMember;
+
+              return {
+                  shifts: {
+                      ...state.shifts,
+                      morning
+                  }
+              }
           }
-      };
-      case FILL_EVENING_SHIFTS:
-      return {
-          shifts: {
-              ...(state.shifts),
-              evening: action.payload
+
+          if(action.shiftTime === 'evening'){
+              let evening = [ ...state.shifts.evening ];
+              evening[action.index] = newShiftMember;
+
+              return {
+                  shifts: {
+                      ...state.shifts,
+                      evening
+                  }
+              }
           }
-      };
+
+          return state;
     default:
       return state
   }
 }
 
-
-export const fill_morning_shifts = () => {
-    const payload = [members[randomFrom(members)],members[randomFrom(members)],members[randomFrom(members)],members[randomFrom(members)],members[randomFrom(members)]];
-        console.log(payload);
-  return dispatch => {
-    dispatch({
-      type: FILL_MORNING_SHIFTS,
-      payload
-    })
-  }
-};
-
-
-export const fill_evening_shifts = (x) => {
+export const change_shift_random = ( shiftTime , index ) => {
     return dispatch => {
         dispatch({
-            type: FILL_EVENING_SHIFTS,
-            payload: x
+            type: CHANGE_SHIFT_RANDOM,
+            shiftTime,
+            index
         })
     }
 };
 
-export const change_shift = (x) => {
-    alert('change_shift');
+export const random_all_again = () => {
     return dispatch => {
         dispatch({
-            type: FILL_EVENING_SHIFTS,
-            payload: x
+            type: RANDOM_ALL_AGAIN
+        })
+    }
+};
+
+export const change_shift_specific = () => {
+    return dispatch => {
+        dispatch({
+            type: CHANGE_SHIFT_SPECIFIC
         })
     }
 };

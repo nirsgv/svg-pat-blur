@@ -87,7 +87,7 @@ ul.ham{
     list-style: none;
     width: 100%;
     height: inherit;
-    top: 0%;
+    top: 0;
     left: 0;
     right: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -103,3 +103,4 @@ ul.ham{
     float: right;
     margin-bottom: 6px;
 }
+
