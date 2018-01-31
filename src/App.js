@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Character from './components/character';
 import Popup from './components/popup';
 import './App.css';
-import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
@@ -15,9 +14,21 @@ import {
     toggle_popup
 } from './reducers/popup'
 
-import {
-    add_member
-} from './reducers/members'
+
+
+const PopupConditional = (props) => {
+    console.log(props);
+    if (props.isOpen) {
+        return <Popup>
+            <button className="close"
+                    onClick={() => props.toggle_popup()}>
+                סגור
+            </button>
+
+        </Popup>;
+    }
+    return null;
+};
 
 const App = (props) => (
     //console.log(props),
@@ -53,11 +64,13 @@ const App = (props) => (
                             <Character shift={array[index]} members={props.members} />
                             <button className="choose-shift" onClick={() => props.toggle_popup()}>בחר</button>
                             <button className="random-shift" onClick={() => props.change_shift_random('evening', index)}>אקראי</button>
-
                         </li>
                     )}
                 </ul>
-             </div>
+
+                <PopupConditional isOpen={props.popup.isOpen} toggle_popup={props.toggle_popup}/>
+
+            </div>
             <button id="plus" onClick={props.random_all_again}>רנדם הכל</button>
             <button id="print" onClick={() => window.print()}>הדפס</button>
         </div>
@@ -66,18 +79,14 @@ const App = (props) => (
 
 
 const mapStateToProps = state => ({
-    layers: state.layers.layers,
-    layerCount: state.layers.layerCount,
-    members: state.members.team_members,
+    popup: state.popup.popUp,
     shifts: state.shifts.shifts
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     random_all_again,
     change_shift_random,
-    toggle_popup,
-    add_member,
-    changePage: () => push('/about-us')
+    toggle_popup
 }, dispatch);
 
 export default connect(

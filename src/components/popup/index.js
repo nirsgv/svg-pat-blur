@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Popup = (props) => (
     //console.log(props),
             <div className="popup">
-
+                {props.children}
             </div>
 );
 
