@@ -4,6 +4,7 @@ import Popup from './components/popup';
 import './App.css';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import data from './data';
 
 import {
     random_all_again,
@@ -15,23 +16,22 @@ import {
 } from './reducers/popup'
 
 
-
 const PopupConditional = (props) => {
-    console.log(props);
+    console.log(data);
     if (props.isOpen) {
         return <Popup>
             <button className="close"
                     onClick={() => props.toggle_popup()}>
                 סגור
             </button>
-
+            {data.team_members.map(member =>  <li>{member.name}</li>)}
         </Popup>;
     }
     return null;
 };
 
 const App = (props) => (
-    //console.log(props),
+    console.log(props),
     <div className="App">
         <div className="container">
             <div className="content">
@@ -88,6 +88,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     change_shift_random,
     toggle_popup
 }, dispatch);
+
 
 export default connect(
     mapStateToProps,

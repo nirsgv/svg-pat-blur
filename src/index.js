@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { render } from 'react-dom'
-import data from './data'
 
 import './index.css';
 import App from './App';
