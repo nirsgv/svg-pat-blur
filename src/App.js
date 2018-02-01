@@ -15,6 +15,7 @@ import {
     toggle_popup
 } from './reducers/popup'
 
+export const randomFrom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 const PopupConditional = (props) => {
     console.log(data);
@@ -71,8 +72,10 @@ const App = (props) => (
                 <PopupConditional isOpen={props.popup.isOpen} toggle_popup={props.toggle_popup}/>
 
             </div>
-            <button id="plus" onClick={props.random_all_again}>רנדם הכל</button>
-            <button id="print" onClick={() => window.print()}>הדפס</button>
+            <div className="main-buttons-wrp">
+                <button id="random-all" onClick={props.random_all_again}>רנדם הכל</button>
+                <button id="print" onClick={() => window.print()}>הדפס</button>
+            </div>
         </div>
     </div>
 );

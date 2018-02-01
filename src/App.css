@@ -1,3 +1,8 @@
+:root{
+    --main-button-color: brown;
+    --main-text-color: white;
+}
+
 .App {
     text-align: center;
 }
@@ -56,7 +61,10 @@ ul.layers{
         transform: rotate(360deg);
     }
 }
-
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 body {
     color: #fff;
     text-align: center;
@@ -261,4 +269,16 @@ li:hover>button.random-shift{
     height: 50%;
     background: blue;
     z-index: 12;
+}
+
+.main-buttons-wrp{
+    text-align: right;
+    margin-top: 6px;
+}
+
+button#random-all,
+button#print{
+    background-color: var(--main-button-color);
+    color: var(--main-text-color);
+    margin-left: 6px;
 }
