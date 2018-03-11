@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Layers from './containers/layers';
 import Legend from './containers/legend';
 import Slider from './components/Slider';
+import LayerQuanityControl from './components/LayerQuanityControl';
 import './App.css';
 import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
@@ -16,7 +17,8 @@ import {
 } from './reducers/ranger'
 import {
     add_layer,
-    delete_layer
+    delete_layer,
+    choose_layer,
 } from './reducers/layers'
 const mapStateToProps = state => ({
     layers: state.layers.layers,
@@ -32,6 +34,7 @@ const App = (props) => {
         opacityAmount,
         increment,
         delete_layer,
+        choose_layer,
         decrement,
         layers,
     } = props;
@@ -52,32 +55,18 @@ const App = (props) => {
             </header>
 
             <div id="content">
-                <div className="item two">
-                    <button id="plus" onClick={(event) => {
-                        add_layer();
-                        increment();
-                    }}>+
-                    </button>
-                </div>
-
-                <div className="item three">
-                    <button id="minus" onClick={(event) => {
-                        (layers.length > 0) && //condition for both actions
-                        [delete_layer(
-                            (layers[layers.length - 1].id)
-                        ),
-                        decrement()];
-                    }}>-
-                    </button>
-                </div>
+                <LayerQuanityControl
+                    layers={layers}
+                    choose_layer={choose_layer}
+                    add_layer={add_layer}
+                    delete_layer={delete_layer}
+                    increment={increment}
+                    decrement={decrement}
+                />
 
                  <div className="item five">
                      <Slider />
                  </div>
-                 <div className="item six"></div>
-                 <div className="item seven"></div>
-                 <div className="item eight"></div>
-                 <div className="item nine"></div>
             </div>
         </div>)
 };
@@ -86,6 +75,7 @@ const App = (props) => {
 const mapDispatchToProps = dispatch => bindActionCreators({
     add_layer,
     delete_layer,
+    choose_layer,
     increment,
     decrement,
     change_range_amt,
