@@ -1,4 +1,7 @@
-
+:root{
+    --main-button-color: brown;
+    --main-text-color: white;
+}
 
 .App {
     text-align: center;
@@ -79,7 +82,10 @@ ul.layer-indicator-button-list{
         transform: rotate(360deg);
     }
 }
-
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 body {
     color: #fff;
     text-align: center;
