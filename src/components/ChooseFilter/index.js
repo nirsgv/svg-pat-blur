@@ -5,37 +5,24 @@ import Slider from '../Slider'
 
 const ChooseFilter = (props) => {
 const {
-    add_layer,
-    increment,
-    delete_layer,
-    choose_layer,
-    decrement,
-    layers,
+    choose_filter,
+    filtersData,
 } = props;
-const filtersArray = [
-    {color:'color'},
-    {backgroundRepeat: 'background-repeat'},
-    {backgroundImage: 'background-image'},
-    {opacity: 'opacity'},
-    {blur: 'blur'},
-    {saturate: 'saturate'},
-    {contrast: 'contrast'},
-    {sepia: 'sepia'},
-    {grayScale: 'grayscale'},
-    {invert: 'invert'},
-    {hueRotate: 'hue-rotate'},
-    {backgroundSize: 'background-size'},
-    {backgroundBlendMode: 'background-blend-mode'},
-    {mixBlendMode: 'mix-blend-mode'},
-];
-
 return (
     <Fragment>
-        <select id="filter-select">
-            {filtersArray.map((item,index,array)=>{
-                const val = item[Object.keys(item)[0]];
+        <select id="filter-select"
+                ref={(input)=> this.selectOption = input}
+                onChange={() => choose_filter(this.selectOption.value)}
+        >
+            {filtersData.filtersData.map((item,index,array)=>{
+                const val = item.string;
+                const valKey = item.filterName;
+                const id = item.id;
+                const filter = item.filterName;
                 return(
-                <option value={val}>
+                <option value={valKey}
+
+                >
                     {val}
                 </option>
             )})}

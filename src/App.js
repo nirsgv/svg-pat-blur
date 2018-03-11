@@ -21,11 +21,17 @@ import {
     delete_layer,
     choose_layer,
 } from './reducers/layers'
+import {
+    choose_filter
+} from './reducers/filters'
 const mapStateToProps = state => ({
     layers: state.layers.layers,
     layerCount: state.layers.layerCount,
     count: state.counter.count,
-    opacityAmount: state.ranger.opacityAmount
+    opacityAmount: state.ranger.opacityAmount,
+    filtersData: state.filters,
+    chosenFilter: state.filters.chosenFilter,
+    chosenLayerId: state.layers.chosenLayerId
 });
 const App = (props) => {
 
@@ -36,12 +42,16 @@ const App = (props) => {
         increment,
         delete_layer,
         choose_layer,
+        choose_filter,
         decrement,
         layers,
+        filtersData,
+        chosenFilter,
+        chosenLayerId,
     } = props;
 
 
-
+console.log(layers);
 
         return (
 
@@ -64,9 +74,18 @@ const App = (props) => {
                     increment={increment}
                     decrement={decrement}
                 />
-                 <ChooseFilter />
+                 <ChooseFilter
+                     choose_filter={choose_filter}
+                     filtersData={filtersData}
+                     layers={layers}
+                 />
                  <div className="item five">
-                     <Slider />
+                     <Slider
+                         chosenFilter={chosenFilter}
+                         chosenLayerId={chosenLayerId}
+                         filtersData={filtersData}
+                         layers={layers}
+                     />
                  </div>
             </div>
         </div>)
@@ -77,6 +96,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     add_layer,
     delete_layer,
     choose_layer,
+    choose_filter,
     increment,
     decrement,
     change_range_amt,
