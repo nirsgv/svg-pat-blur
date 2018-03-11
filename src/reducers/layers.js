@@ -3,6 +3,7 @@ import uuid from 'uuid';
 import rndArr from '../helpers';
 export const ADD_LAYER = 'layers/ADD_LAYER';
 export const DELETE_LAYER = 'layers/DELETE_LAYER';
+export const CHOOSE_LAYER = 'layers/CHOOSE_LAYER';
 
 
 const tmpImgArray = [
@@ -13,12 +14,14 @@ const tmpImgArray = [
     'http://baketheneat.com/wp-content/uploads/2017/06/Peanut-Butter-and-Strawberry-Recipe-Images.jpg',
     'https://cdn.pixabay.com/photo/2018/02/25/22/29/strawberry-3181926__340.jpg'
 ];
+const initialChosenLayedId = uuid.v4();
 
 const initialState = {
     layerCount: 2,
+    chosenLayerId: initialChosenLayedId,
     layers: [
         {
-            id: uuid.v4(),
+            id: initialChosenLayedId,
             Key: uuid.v4(),
             cat: 'img',
             stl: {
@@ -68,7 +71,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
 
       case ADD_LAYER:
-
       return {
           ...state,
           layers: state.layers.concat(action.newLayer),
@@ -80,8 +82,14 @@ export default (state = initialState, action) => {
               layers: state.layers.filter(layer => layer.id !== action.payload),
               layerCount: state.layerCount-1
           };
+      case CHOOSE_LAYER:
+          return {
+              ...state,
+              chosenLayerId: action.payload
+          };
+
     default:
-      return state
+      return state;
   }
 }
 
@@ -123,6 +131,15 @@ export const delete_layer = (id) => {
     return dispatch => {
         dispatch({
             type: DELETE_LAYER,
+            payload: id
+        })
+    }
+};
+
+export const choose_layer = (id) => {
+    return dispatch => {
+        dispatch({
+            type: CHOOSE_LAYER,
             payload: id
         })
     }

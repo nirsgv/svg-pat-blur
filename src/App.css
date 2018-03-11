@@ -87,9 +87,11 @@ body {
 }
 
 #content {
+    /*
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, minmax(150px, auto));
+    */
     max-width: 960px;
     margin: 0 auto;
     font-family: 'Nunito Semibold';
@@ -99,11 +101,14 @@ body {
     align-items: stretch;
     z-index: 10;
     position: absolute;
+    bottom: 0;
+    width: 110px;
 }
 
 #content > div {
     background: #3bbced;
-    min-height: 200px;
+    min-height: 150px;
+    float: right;
 }
 
 #content > div:nth-child(even) {
@@ -191,4 +196,7 @@ body {
     margin: 0;
     transform-origin: 75px 75px;
     transform: rotate(-90deg);
+}
+.layer-indicator-button-list-item.active{
+    background-color: blue;
 }
