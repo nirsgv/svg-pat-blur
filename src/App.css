@@ -1,3 +1,5 @@
+
+
 .App {
     text-align: center;
 }
@@ -33,9 +35,21 @@
     width: 100%;
     height: 100%;
 }
+
+main {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 div.layers{
-    position: relative;
-    height: 300px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 ul.layers{
     position: absolute;
@@ -43,7 +57,16 @@ ul.layers{
     top: 0;
     width: 100%;
     height: 100%;
-    list-style: none;
+}
+ul.layers li{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+ul.layer-indicator-button-list{
+
 }
 .layer-indicator-button-wrp{
     border-radius: 50%;
@@ -74,6 +97,8 @@ body {
     grid-column-gap: 10px;
     grid-gap: 20px;
     align-items: stretch;
+    z-index: 10;
+    position: absolute;
 }
 
 #content > div {

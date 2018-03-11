@@ -18,11 +18,12 @@ const LayerIndicatorButtonElement = styled.button`
 
 
 const LayerIndicatorButton = (props) => (
-
+console.log(props.layerProps),
 <li className="layer-indicator-button-list-item" key={props.index}>
     <LayerIndicatorButtonWrp className="layer-indicator-button-wrp">
         <LayerIndicatorButtonElement className="layer-indicator-button">
             {props.index}
+            {props.layerProps.id}
         </LayerIndicatorButtonElement>
     </LayerIndicatorButtonWrp>
 </li>

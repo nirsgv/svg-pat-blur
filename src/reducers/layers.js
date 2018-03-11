@@ -1,10 +1,18 @@
 import { fromJS } from 'immutable';
 import uuid from 'uuid';
-export const ADD_LAYER = 'layers/ADD_LAYER'
-export const DELETE_LAYER = 'layers/DELETE_LAYER'
+import rndArr from '../helpers';
+export const ADD_LAYER = 'layers/ADD_LAYER';
+export const DELETE_LAYER = 'layers/DELETE_LAYER';
 
 
-
+const tmpImgArray = [
+    'http://cdn-img.health.com/sites/default/files/styles/medium_16_9/public/styles/main/public/strawberry-seeds-crohns-400x400.jpg?itok=0cqj-sNb',
+    'https://cdn.pixabay.com/photo/2018/02/18/16/36/strawberry-3162743__340.jpg',
+    'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/137301.jpg?output-format=webp&output-quality=60&resize=1000:*',
+    'https://images-na.ssl-images-amazon.com/images/I/71ljdtdgHjL._SL1200_.jpg',
+    'http://baketheneat.com/wp-content/uploads/2017/06/Peanut-Butter-and-Strawberry-Recipe-Images.jpg',
+    'https://cdn.pixabay.com/photo/2018/02/25/22/29/strawberry-3181926__340.jpg'
+];
 
 const initialState = {
     layerCount: 2,
@@ -60,6 +68,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
 
       case ADD_LAYER:
+
       return {
           ...state,
           layers: state.layers.concat(action.newLayer),
@@ -86,18 +95,18 @@ export const add_layer = () => {
         stl: {
             color: 'blue',
             backgroundRepeat: 'repeat',
-            backgroundImage: 'http://cdn-img.health.com/sites/default/files/styles/medium_16_9/public/styles/main/public/strawberry-seeds-crohns-400x400.jpg?itok=0cqj-sNb',
+            backgroundImage: rndArr(tmpImgArray),
             opacity: 0.8,
-            blur: 4,
-            saturate: 5,
+            blur: 1,
+            saturate: 1,
             contrast: 20,
             sepia: .2,
             grayScale: .2,
             invert: .2,
-            hueRotate: '90deg',
+            hueRotate: '20deg',
             backgroundSize: '100%',
-            backgroundBlendMode: 'multiply',
-            mixBlendMode: 'multiply'
+            backgroundBlendMode: 'normal',
+            mixBlendMode: 'normal'
         }
     }
     console.log(newLayer);
@@ -110,11 +119,11 @@ export const add_layer = () => {
 };
 
 
-export const delete_layer = (x) => {
+export const delete_layer = (id) => {
     return dispatch => {
         dispatch({
             type: DELETE_LAYER,
-            payload: x
+            payload: id
         })
     }
 };
