@@ -2,7 +2,6 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Layer from '../../components/Layer'
-import styled from 'styled-components'
 
 
 const mapStateToProps = state => ({
