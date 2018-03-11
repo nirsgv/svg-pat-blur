@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import Layers from './containers/layers';
 import Legend from './containers/legend';
 import Slider from './components/Slider';
@@ -20,6 +19,7 @@ import {
     add_layer,
     delete_layer,
     choose_layer,
+    set_stl,
 } from './reducers/layers'
 import {
     choose_filter
@@ -85,6 +85,7 @@ console.log(layers);
                          chosenLayerId={chosenLayerId}
                          filtersData={filtersData}
                          layers={layers}
+                         set_stl={set_stl}
                      />
                  </div>
             </div>
@@ -100,6 +101,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     increment,
     decrement,
     change_range_amt,
+    set_stl,
     changePage: () => push('/about-us')
 }, dispatch);
 

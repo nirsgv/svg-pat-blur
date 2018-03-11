@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import LayerIndicatorButton from './LayerIndicatorButton'
@@ -30,8 +30,8 @@ console.log(props.chosenLayerId),
          props.layers.map((item, index, array) => {
              return (
                         [
-                            <LayerIndicatorButton index={index} layerProps={item} choose_layer={props.choose_layer} chosenLayerId={props.chosenLayerId}/>,
-                            <CloseBtn id={item.id} delete_layer={props.delete_layer}/>
+                            <LayerIndicatorButton index={index} key={index} layerProps={item} choose_layer={props.choose_layer} chosenLayerId={props.chosenLayerId}/>,
+                            <CloseBtn id={item.id} key={Date.now()} delete_layer={props.delete_layer}/>
 
                         ]
                     )

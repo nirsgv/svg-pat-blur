@@ -1,7 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import styled from 'styled-components'
-import Slider from '../Slider'
-
+import React, { Fragment } from 'react';
 
 const ChooseFilter = (props) => {
 const {
@@ -21,7 +18,7 @@ return (
                 const filter = item.filterName;
                 return(
                 <option value={valKey}
-
+                        key={index}
                 >
                     {val}
                 </option>

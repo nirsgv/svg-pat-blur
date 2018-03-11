@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Layer from '../../components/Layer'
@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
         {
          props.layers.map((item, index, array) => {
              return (
-                     <li>
+                     <li key={index}>
                          <Layer layerId={props.layerId} layerProps={item}/>
                      </li>
                     )

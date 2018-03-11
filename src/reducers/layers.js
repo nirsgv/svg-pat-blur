@@ -1,9 +1,9 @@
-import { fromJS } from 'immutable';
 import uuid from 'uuid';
 import rndArr from '../helpers';
 export const ADD_LAYER = 'layers/ADD_LAYER';
 export const DELETE_LAYER = 'layers/DELETE_LAYER';
 export const CHOOSE_LAYER = 'layers/CHOOSE_LAYER';
+export const SET_STL = 'layers/SET_STL';
 
 
 const tmpImgArray = [
@@ -87,6 +87,11 @@ export default (state = initialState, action) => {
               ...state,
               chosenLayerId: action.payload
           };
+      case SET_STL:
+          return {
+              ...state,
+              chosenLayerId: action.payload
+          };
 
     default:
       return state;
@@ -140,6 +145,15 @@ export const choose_layer = (id) => {
     return dispatch => {
         dispatch({
             type: CHOOSE_LAYER,
+            payload: id
+        })
+    }
+};
+
+export const set_stl = (id) => {
+    return dispatch => {
+        dispatch({
+            type: SET_STL,
             payload: id
         })
     }

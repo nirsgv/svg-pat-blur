@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 
 
@@ -43,12 +43,7 @@ const Layer = (props) => (
     }
     render() {
         return (
-            console.log(this.props),
-        <div className="img-wrp" >
-            <StyledImgLayer alt="berry1"
-            styleProps={this.props.layerProps.stl}
-        />
-        </div>
+
     );
     }
 }*/
