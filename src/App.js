@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Layers from './containers/layers';
 import Legend from './containers/legend';
 import Slider from './components/Slider';
+import ChooseFilter from './components/ChooseFilter';
 import LayerQuanityControl from './components/LayerQuanityControl';
 import './App.css';
 import {push} from 'react-router-redux'
@@ -63,7 +64,7 @@ const App = (props) => {
                     increment={increment}
                     decrement={decrement}
                 />
-
+                 <ChooseFilter />
                  <div className="item five">
                      <Slider />
                  </div>

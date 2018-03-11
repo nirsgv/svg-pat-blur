@@ -206,3 +206,7 @@ body {
 .layer-indicator-button-list-item.active{
     background-color: blue;
 }
+
+#filter-select{
+    color: #333;
+}
