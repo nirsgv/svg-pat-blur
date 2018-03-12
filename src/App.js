@@ -48,13 +48,12 @@ const App = (props) => {
         filtersData,
         chosenFilter,
         chosenLayerId,
+        set_stl,
     } = props;
 
 
 console.log(layers);
-
         return (
-
     <div className="App">
             <main>
                 <Layers />
@@ -86,6 +85,7 @@ console.log(layers);
                          filtersData={filtersData}
                          layers={layers}
                          set_stl={set_stl}
+                         vals={layers[0][chosenFilter]}
                      />
                  </div>
             </div>

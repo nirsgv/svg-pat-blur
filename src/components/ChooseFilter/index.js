@@ -12,16 +12,18 @@ return (
                 onChange={() => choose_filter(this.selectOption.value)}
         >
             {filtersData.filtersData.map((item,index,array)=>{
-                const val = item.string;
-                const valKey = item.filterName;
-                const id = item.id;
-                const filter = item.filterName;
+                const val = item.string,
+                      valKey = item.filterName,
+                      id = item.id,
+                      filter = item.filterName;
                 return(
-                <option value={valKey}
-                        key={index}
-                >
-                    {val}
-                </option>
+                <Fragment>
+                    <option value={valKey}
+                            key={index}
+                    >
+                        {val}
+                    </option>
+                </Fragment>
             )})}
         </select>
     </Fragment>

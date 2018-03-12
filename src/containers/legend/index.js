@@ -10,7 +10,6 @@ import {
 } from '../../reducers/layers'
 
 const mapStateToProps = state => (
-    console.log('state'),
     console.log(state),
     {
     layers: state.layers.layers,

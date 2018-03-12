@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Slider = ({filtersData, chosenLayerId, layers}) => {
+const Slider = ({filtersData, chosenLayerId, chosenFilter, layers, set_stl, vals}) => {
     console.log( layers);
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0],
           layerChoiceFilter = layers.filter(layer => (layer.id !== chosenLayerId)),
@@ -14,7 +14,7 @@ const Slider = ({filtersData, chosenLayerId, layers}) => {
         max,
         step,
         list,
-        filterName
+        filterName,
     } = filterChoice;
     return (
         <div className="slider-wrp">
@@ -32,12 +32,19 @@ const Slider = ({filtersData, chosenLayerId, layers}) => {
                 <option value="100" label="100%"/>
             </datalist>
             <input type={type}
-                   onChange={() =>{console.log(this.value)}}
+                   ref={(input)=> this.inputPhysical = input}
+                   onChange={(event) => {set_stl(
+                           this.inputPhysical.value,
+                           chosenFilter,
+                           chosenLayerId,
+                           layers)
+                   }}
+
                    min={min}
                    max={max}
                    step={step}
                    list={list}
-                   value={layerChoiceStl[filterName]}
+                   value={vals}
             />
         </div>
     )

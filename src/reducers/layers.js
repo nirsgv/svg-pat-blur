@@ -90,9 +90,8 @@ export default (state = initialState, action) => {
       case SET_STL:
           return {
               ...state,
-              chosenLayerId: action.payload
+              layers:action.payload
           };
-
     default:
       return state;
   }
@@ -121,7 +120,7 @@ export const add_layer = () => {
             backgroundBlendMode: 'normal',
             mixBlendMode: 'normal'
         }
-    }
+    };
     console.log(newLayer);
   return dispatch => {
     dispatch({
@@ -150,11 +149,17 @@ export const choose_layer = (id) => {
     }
 };
 
-export const set_stl = (id) => {
+export const set_stl = (val,chosenFilter,chosenLayerId,layers) => {
+    //console.log(val,chosenFilter,chosenLayerId,layers);
+    let newLayers = layers;
+    //console.log(newLayers);
+    console.log(100);
+    newLayers[0].stl[chosenFilter] = val;
+    //console.log(newLayers);
     return dispatch => {
         dispatch({
             type: SET_STL,
-            payload: id
+            payload: newLayers,
         })
     }
 };
