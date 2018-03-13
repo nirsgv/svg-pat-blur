@@ -27,7 +27,7 @@ const StyledImgLayer = styled.img`
   border-color: tomato;
     `;*/
 const Layer = (props) => (
-    console.log(props),
+    console.log(props.layerProps.opacity),
             <div className="img-wrp" >
                 <StyledImgLayer alt="berry1"
                                 styleProps={props.layerProps.stl}

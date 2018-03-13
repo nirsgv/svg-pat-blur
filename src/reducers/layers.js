@@ -152,8 +152,11 @@ export const choose_layer = (id) => {
 export const set_stl = (val,chosenFilter,chosenLayerId,layers) => {
     //console.log(val,chosenFilter,chosenLayerId,layers);
     let newLayers = layers;
+
+    //get ArrKey from layers
+    let ArrKey = newLayers.filter((layer,index,arr) => {if(layer.id === chosenLayerId){return layer.id}});
     //console.log(newLayers);
-    console.log(100);
+    console.log(ArrKey[0].id);
     newLayers[0].stl[chosenFilter] = val;
     //console.log(newLayers);
     return dispatch => {

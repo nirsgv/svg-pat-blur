@@ -24,7 +24,9 @@ import {
 import {
     choose_filter
 } from './reducers/filters'
-const mapStateToProps = state => ({
+const mapStateToProps = state => (
+    console.log(state.layers.layers[0].stl.opacity),
+    {
     layers: state.layers.layers,
     layerCount: state.layers.layerCount,
     count: state.counter.count,
