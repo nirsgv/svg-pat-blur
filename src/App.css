@@ -210,3 +210,9 @@ body {
 #filter-select{
     color: #333;
 }
+
+button#increment,button#decrement {
+    width: 80px;
+    height: 20px;
+    background-color: REBECCAPURPLE;
+}

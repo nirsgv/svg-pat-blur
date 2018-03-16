@@ -1,7 +1,16 @@
 import React, { Fragment } from 'react';
 import Parser from 'html-react-parser';
 
-const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layers, set_stl, choose_select_option, vals}) => {
+const Slider = ({filtersData,
+                 chosenLayerId,
+                 chosenLayerIdx,
+                 chosenFilter,
+                 layers,
+                 set_stl,
+                 choose_select_option,
+                 increment,
+                 decrement,
+                 vals}) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
     const {
         type,
@@ -53,6 +62,8 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
                        )
                    }}
             />
+            <button id="increment" onChange={increment}></button>
+            <button id="decrement" onChange={decrement}></button>
         </Fragment>;
     return (
 

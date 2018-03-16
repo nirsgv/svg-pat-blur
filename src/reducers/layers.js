@@ -5,6 +5,8 @@ export const DELETE_LAYER = 'layers/DELETE_LAYER';
 export const CHOOSE_LAYER = 'layers/CHOOSE_LAYER';
 export const SET_STL = 'layers/SET_STL';
 export const CHOOSE_SELECT_OPTION = 'layers/CHOOSE_SELECT_OPTION';
+export const INCREMENT_SLIDER = 'layers/INCREMENT_SLIDER';
+export const DECREMENT_SLIDER = 'layers/DECREMENT_SLIDER';
 
 
 const tmpImgArray = [
@@ -98,6 +100,16 @@ export default (state = initialState, action) => {
               layers:action.payload
           };
       case CHOOSE_SELECT_OPTION:
+          return {
+              ...state,
+              layers:action.payload
+          };
+      case INCREMENT_SLIDER:
+          return {
+              ...state,
+              layers:action.payload
+          };
+      case DECREMENT_SLIDER:
           return {
               ...state,
               layers:action.payload
@@ -202,3 +214,42 @@ export const set_stl = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) =>
         })
     }
 };
+
+export const increment_slider = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) => {
+    const specLayer = layers[chosenLayerIdx],
+          assignedSpecLayer = Object.assign({}, specLayer, {
+        stl: {
+            ...specLayer.stl,
+            [filterName]: val
+        }
+    });
+    const newLayers = layers.slice();
+        newLayers[chosenLayerIdx] = assignedSpecLayer;
+
+    return dispatch => {
+        dispatch({
+            type: SET_STL,
+            payload: newLayers,
+        })
+    }
+};
+
+export const decrement_slider = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) => {
+    const specLayer = layers[chosenLayerIdx],
+          assignedSpecLayer = Object.assign({}, specLayer, {
+        stl: {
+            ...specLayer.stl,
+            [filterName]: val
+        }
+    });
+    const newLayers = layers.slice();
+        newLayers[chosenLayerIdx] = assignedSpecLayer;
+
+    return dispatch => {
+        dispatch({
+            type: SET_STL,
+            payload: newLayers,
+        })
+    }
+};
+
