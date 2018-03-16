@@ -212,7 +212,7 @@ body {
 }
 
 button#increment,button#decrement {
-    width: 80px;
+    width: 40px;
     height: 20px;
     background-color: REBECCAPURPLE;
 }

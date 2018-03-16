@@ -8,8 +8,8 @@ const Slider = ({filtersData,
                  layers,
                  set_stl,
                  choose_select_option,
-                 increment,
-                 decrement,
+                 increment_slider,
+                 decrement_slider,
                  vals}) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
     const {
@@ -62,8 +62,26 @@ const Slider = ({filtersData,
                        )
                    }}
             />
-            <button id="increment" onChange={increment}></button>
-            <button id="decrement" onChange={decrement}></button>
+            <button id="increment"
+                    onClick={(event) => {
+                       increment_slider(
+                           this.inputPhysical.value,
+                           filterName,
+                           chosenLayerId,
+                           chosenLayerIdx,
+                           layers
+                       )
+                   }}><span>+</span></button>
+            <button id="decrement"
+                    onClick={(event) => {
+                       decrement_slider(
+                           this.inputPhysical.value,
+                           filterName,
+                           chosenLayerId,
+                           chosenLayerIdx,
+                           layers
+                       )
+                   }}><span>-</span></button>
         </Fragment>;
     return (
 

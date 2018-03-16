@@ -81,8 +81,8 @@ console.log(layers);
                     choose_layer={choose_layer}
                     add_layer={add_layer}
                     delete_layer={delete_layer}
-                    increment_slider={increment_slider}
-                    decrement_slider={decrement_slider}
+                    increment={increment}
+                    decrement={decrement}
                 />
                  <ChooseFilter
                      choose_filter={choose_filter}
