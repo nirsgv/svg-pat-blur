@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layers, set_stl, vals}) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
@@ -10,40 +10,56 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
         list,
         label,
         filterName,
+        modes,
     } = filterChoice;
+    const switchInputMode = modes ?
+
+        <Fragment>
+            <select id={filterName}
+                    ref={(input)=> this.selectModes = input}
+                    //onChange={() => choose_filter(this.selectOption.value)}
+            >
+                {filtersData.filtersData.map((item,index,array)=>{
+                    const val = item.string,
+                        valKey = item.filterName,
+                        id = item.id,
+                        filter = item.filterName;
+                    return(
+                        <Fragment key={index}>
+                            <option value={valKey}
+                            >
+                                {val}
+                            </option>
+                        </Fragment>
+                    )})}
+            </select>
+        </Fragment>
+
+     : <input type={type}
+              id={filterName}
+                min={min}
+                max={max}
+                step={step}
+                list={list}
+                value={vals}
+                ref={(input)=> this.inputPhysical = input}
+                onChange={(event) => {
+                    set_stl(
+                        this.inputPhysical.value,
+                        filterName,
+                        chosenLayerId,
+                        chosenLayerIdx,
+                        layers
+                    )
+                }}
+    />;
     return (
-        <div className="slider-wrp">
-            <datalist id="tickmarks">
-                <option value="0" label="0%"/>
-                <option value="10"/>
-                <option value="20"/>
-                <option value="30"/>
-                <option value="40"/>
-                <option value="50" label="50%"/>
-                <option value="60"/>
-                <option value="70"/>
-                <option value="80"/>
-                <option value="90"/>
-                <option value="100" label="100%"/>
-            </datalist>
-            <label>{label}</label>
-            <input type={type}
-                   min={min}
-                   max={max}
-                   step={step}
-                   list={list}
-                   value={vals}
-                   ref={(input)=> this.inputPhysical = input}
-                   onChange={(event) => {
-                       set_stl(
-                           this.inputPhysical.value,
-                           filterName,
-                           chosenLayerId,
-                           chosenLayerIdx,
-                           layers
-                       )
-                   }}
-            />
+
+        <div className={`${filterName}-wrp`}>
+            <label htmlFor={filterName}>
+                {label}
+            </label>
+            {switchInputMode}
         </div>
     )
 };

@@ -14,12 +14,23 @@ const initialState = {
          label: 'Opacity',
          min:0,
          max:1,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 1,
-         list:"tickmarks",
+         list:`<datalist id="opacityTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
          type:"range"
-
         },
         {
          id:2,
@@ -36,12 +47,23 @@ const initialState = {
          ],
          min:0,
          max:10,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 5,
-         list:"tickmarks",
-         type:"range"
-
+         list:`<datalist id="backgroundRepeatTickmarks">
+                <option value="0" label="0%"/>
+                <option value="10"/>
+                <option value="20"/>
+                <option value="30"/>
+                <option value="40"/>
+                <option value="50" label="50%"/>
+                <option value="60"/>
+                <option value="70"/>
+                <option value="80"/>
+                <option value="90"/>
+                <option value="100" label="100%"/>
+               </datalist>`,
+        type:"range"
         },
         {
          id:3,
@@ -50,11 +72,23 @@ const initialState = {
          label:'Background Image',
          min:0,
          max:10,
-         step:0.01,
+         step:1,
          suffix:'',
          value: 5,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="backgroundImageTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         }
         ,
@@ -65,11 +99,23 @@ const initialState = {
          label:'Color',
          min:0,
          max:10,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 5,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="colorTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
         },
         {
          id:5,
@@ -78,11 +124,23 @@ const initialState = {
          label: 'Blur',
          min:0,
          max:10,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 0,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="blurTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -92,11 +150,23 @@ const initialState = {
          label: 'Saturate',
          min:0,
          max:100,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 0,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="saturateTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -106,11 +176,23 @@ const initialState = {
          label: 'Contrast',
          min:0,
          max:100,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 100,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="contrastTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -120,11 +202,23 @@ const initialState = {
          label: 'Brightness',
          min:0,
          max:100,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 100,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="brightnessTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -134,11 +228,23 @@ const initialState = {
          label: 'Sepia',
          min:0,
          max:100,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 7,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="sepiaTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -148,11 +254,23 @@ const initialState = {
          label: 'Grayscale',
          min:0,
          max:100,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 0,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="grayScaleTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -162,11 +280,23 @@ const initialState = {
          label: 'Url',
          min:0,
          max:10,
-         step:0.01,
+         step:1,
          suffix:'',
          value: 6,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="urlTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -176,11 +306,23 @@ const initialState = {
          label: 'Invert',
          min:0,
          max:100,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 5,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="invertTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -190,11 +332,23 @@ const initialState = {
          label: 'Hue-rotate',
          min:0,
          max:360,
-         step:0.1,
+         step:1,
          suffix:'',
          value: 4,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="hueRotateTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -204,11 +358,23 @@ const initialState = {
          label: 'Background size',
          min:1,
          max:100,
-         step:0.01,
+         step:1,
          suffix:'',
          value: 3,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="backgroundSizeTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -230,11 +396,23 @@ const initialState = {
          ],
          min:0,
          max:10,
-         step:0.01,
+         step:1,
          suffix:'',
          value: 2,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="backgroundBlendModeTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         },
         {
@@ -262,11 +440,23 @@ const initialState = {
          ],
          min:0,
          max:10,
-         step:0.01,
+         step:1,
          suffix:'',
          value: 1,
-         list:"tickmarks",
-         type:"range"
+         type:"range",
+         list:`<datalist id="mixBlendModeTickmarks">
+                   <option value="0" label="0%"/>
+                   <option value="10"/>
+                   <option value="20"/>
+                   <option value="30"/>
+                   <option value="40"/>
+                   <option value="50" label="50%"/>
+                   <option value="60"/>
+                   <option value="70"/>
+                   <option value="80"/>
+                   <option value="90"/>
+                   <option value="100" label="100%"/>
+               </datalist>`,
 
         }
     ]
