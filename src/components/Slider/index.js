@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layers, set_stl, vals}) => {
-    console.log( layers);
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
     const {
         type,
