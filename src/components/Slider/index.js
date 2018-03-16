@@ -19,16 +19,11 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
                     ref={(input)=> this.selectModes = input}
                     //onChange={() => choose_filter(this.selectOption.value)}
             >
-                {filtersData.filtersData.map((item,index,array)=>{
-                    const val = item.string,
-                        valKey = item.filterName,
-                        id = item.id,
-                        filter = item.filterName;
+                {modes.map((item,index,array)=>{
                     return(
                         <Fragment key={index}>
-                            <option value={valKey}
-                            >
-                                {val}
+                            <option value={item}>
+                                {item}
                             </option>
                         </Fragment>
                     )})}
