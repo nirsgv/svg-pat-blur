@@ -4,35 +4,33 @@ import styled from 'styled-components'
 
 const StyledImgLayer = styled.img`
   border-color: tomato;
-  color: ${props => props.styleProps.color ? 'gold' : 'black'};
-  opacity: ${props => props.styleProps.opacity};
-  mix-blend-mode: ${props => props.styleProps.mixBlendMode};
-  background-blend-mode: ${props => props.styleProps.backgroundBlendMode};
-  background-size: ${props => props.styleProps.backgroundSize};
-  background-image: url('${props => props.styleProps.backgroundImage}');
-  filter: blur(${props => props.styleProps.blur}px)
-          sepia(${props => props.styleProps.sepia})
-          saturate(${props => props.styleProps.saturate})
-          contrast(${props => props.styleProps.contrast})
-          grayScale(${props => props.styleProps.grayScale})
-          invert(${props => props.styleProps.invert})
-          hue-rotate(${props => props.styleProps.hueRotate});
+  color: ${props => props.lp.color ? 'gold' : 'black'};
+  opacity: ${props => props.lp.opacity};
+  mix-blend-mode: ${props => props.lp.mixBlendMode};
+  background-blend-mode: ${props => props.lp.backgroundBlendMode};
+  background-size: ${props => props.lp.backgroundSize};
+  background-image: url('${props => props.lp.backgroundImage}');
+  filter: blur(${props => props.lp.blur}px)
+          brightness(${props => props.lp.brightness}%)
+          hue-rotate(${props => props.lp.hueRotate}deg)
+          sepia(${props => props.lp.sepia}%)
+          saturate(${props => props.lp.saturate})
+          contrast(${props => props.lp.contrast}%)
+          invert(${props => props.lp.invert}%)
+          grayScale(${props => props.lp.grayScale}%)
+          ;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
     `;
-/*const StyledImgLayer = styled.img`
-  border-color: tomato;
-    `;*/
 const Layer = (props) => (
-    console.log(props.layerProps.stl.opacity),
-    console.log(props.layerProps.stl.sepia),
     console.log(props),
             <div className="img-wrp" >
                 <StyledImgLayer alt="berry1"
-                                styleProps={props.layerProps.stl}
+                                id={props.layerId}
+                                lp={props.layerProps}
                 />
             </div>
 )

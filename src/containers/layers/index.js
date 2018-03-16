@@ -5,23 +5,24 @@ import Layer from '../../components/Layer'
 
 
 const mapStateToProps = state => (
-    console.log(state.layers.layers[0].stl.opacity),
-        {
-    tmpOpac: state.layers.layers[0].stl.opacity,
-    layers: state.layers.layers,
-    layerCount: state.layers.layerCount
-});
+
+    {
+        layers: state.layers.layers,
+        layerCount: state.layers.layerCount,
+//try to remove this line
+        t: state.layers.layers[state.layers.chosenLayerIdx],
+    });
 
 
-    const Layers = (props) => (
-console.log(props),
+    const Layers = ({layers=[]}) => (
+console.log(layers),
 <div className="layers">
     <ul className="layers">
         {
-         props.layers.map((item, index, array) => {
+         layers.map((item, index, array) => {
              return (
                      <li key={index}>
-                         <Layer layerId={props.layerId} layerProps={item} />
+                         <Layer layerId={item.id} layerProps={item.stl} />
                      </li>
                     )
                 }

@@ -25,7 +25,7 @@ import {
     choose_filter
 } from './reducers/filters'
 const mapStateToProps = state => (
-    console.log(state.layers.layers[0].stl.opacity),
+    //console.log(state.layers.layers[0].stl.opacity),
     {
     layers: state.layers.layers,
     layerCount: state.layers.layerCount,
@@ -33,7 +33,8 @@ const mapStateToProps = state => (
     opacityAmount: state.ranger.opacityAmount,
     filtersData: state.filters,
     chosenFilter: state.filters.chosenFilter,
-    chosenLayerId: state.layers.chosenLayerId
+    chosenLayerId: state.layers.chosenLayerId,
+    chosenLayerIdx: state.layers.chosenLayerIdx,
 });
 const App = (props) => {
 
@@ -56,6 +57,7 @@ const App = (props) => {
 
 
 console.log(layers);
+    const chosenLayerIdxe = chosenLayerIdx ? chosenLayerIdx : 0;
         return (
     <div className="App">
             <main>
@@ -85,11 +87,11 @@ console.log(layers);
                      <Slider
                          chosenFilter={chosenFilter}
                          chosenLayerId={chosenLayerId}
-                         chosenLayerIdx={chosenLayerIdx}
+                         chosenLayerIdx={chosenLayerIdxe}
                          filtersData={filtersData}
                          layers={layers}
                          set_stl={set_stl}
-                         vals={layers[0][chosenFilter]}
+                         vals={layers[chosenLayerIdxe][chosenFilter]}
                      />
                  </div>
             </div>

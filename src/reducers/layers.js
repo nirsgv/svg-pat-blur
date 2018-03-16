@@ -30,13 +30,14 @@ const initialState = {
                 backgroundRepeat: 'repeat',
                 backgroundImage: 'http://cdn-img.health.com/sites/default/files/styles/medium_16_9/public/styles/main/public/strawberry-seeds-crohns-400x400.jpg?itok=0cqj-sNb',
                 opacity: 0.8,
-                blur: 10,
+                blur: 3,
                 saturate: 5,
-                contrast: 20,
-                sepia: .4,
+                contrast: 100,
+                brightness: 10,
+                sepia: .1,
                 grayScale: .4,
-                invert: .4,
-                hueRotate: '180deg',
+                invert: .1,
+                hueRotate: '10',
                 backgroundSize: '100%',
                 backgroundBlendMode: 'multiply',
                 mixBlendMode: 'multiply'
@@ -54,11 +55,12 @@ const initialState = {
                 opacity: 0.8,
                 blur: 0,
                 saturate: 10,
-                contrast: 10,
+                contrast: 80,
+                brightness: 10,
                 sepia: .8,
                 grayScale: .8,
                 invert: .8,
-                hueRotate: '90deg',
+                hueRotate: '90',
                 backgroundSize: '75%',
                 backgroundBlendMode: 'exclusion',
                 mixBlendMode: 'exclusion',
@@ -112,12 +114,13 @@ export const add_layer = () => {
             backgroundImage: rndArr(tmpImgArray),
             opacity: 0.8,
             blur: 1,
-            saturate: 1,
-            contrast: 20,
+            saturate: .3,
+            contrast: 80,
+            brightness: 10,
             sepia: .2,
             grayScale: .2,
             invert: .2,
-            hueRotate: '20deg',
+            hueRotate: '20',
             backgroundSize: '100%',
             backgroundBlendMode: 'normal',
             mixBlendMode: 'normal'
@@ -152,12 +155,31 @@ export const choose_layer = (id,idx) => {
     }
 };
 
-export const set_stl = (val,chosenFilter,chosenLayerId,chosenLayerIdx,layers) => {
-    //console.log(val,chosenFilter,chosenLayerId,layers);
-    console.log(chosenLayerIdx);
-    let newLayers = layers;
-    newLayers[0].stl[chosenFilter] = val;
-    //console.log(newLayers);
+export const set_stl = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) => {
+    const specLayer = layers[chosenLayerIdx];
+
+ //   newLayers[chosenLayerIdx].stl[filterName] = val;
+
+    const assignedSpecLayer = Object.assign({}, specLayer, {
+        stl: {
+            ...specLayer.stl,
+            [filterName]: val
+        }
+    });
+
+    const newLayers = layers;
+        newLayers[chosenLayerIdx] = assignedSpecLayer;
+
+    console.group();
+        console.log(val);
+        console.log(chosenLayerIdx);
+        console.log(filterName);
+        console.log(specLayer);
+        console.log(assignedSpecLayer);
+        console.log(layers);
+        console.log(newLayers);
+    console.groupEnd();
+
     return dispatch => {
         dispatch({
             type: SET_STL,
