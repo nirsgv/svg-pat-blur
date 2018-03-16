@@ -3,6 +3,8 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
+    "html-react-parser": "^0.4.2",
+    "immutable": "3.8.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -12,7 +14,6 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "sanitize.css": "^5.0.0",
-    "immutable": "3.8.1",
     "styled-components": "2.0.0"
   },
   "devDependencies": {

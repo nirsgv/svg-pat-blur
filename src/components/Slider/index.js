@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Parser from 'html-react-parser';
 
 const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layers, set_stl, choose_select_option, vals}) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
@@ -7,6 +8,7 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
         min,
         max,
         step,
+        datalistId,
         list,
         label,
         filterName,
@@ -30,12 +32,14 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
             </select>
         </Fragment>
 
-     : <input type={type}
+     :         <Fragment>
+            {Parser(list)}
+        <input type={type}
               id={string}
                 min={min}
                 max={max}
                 step={step}
-                list={list}
+                list={datalistId}
                 value={vals}
                 ref={(input)=> this.inputPhysical = input}
                 onChange={(event) => {
@@ -47,7 +51,8 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
                         layers
                     )
                 }}
-    />;
+            />
+        </Fragment>;
     return (
 
         <div className={`${string}-wrp`}>

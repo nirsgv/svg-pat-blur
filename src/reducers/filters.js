@@ -14,7 +14,7 @@ const initialState = {
          label: 'Opacity',
          min:0,
          max:1,
-         step:1,
+         step:.01,
          suffix:'',
          value: 1,
          list:`<datalist id="opacityTickmarks">
@@ -30,6 +30,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'opacityTickmarks',
          type:"range"
         },
         {
@@ -63,6 +64,7 @@ const initialState = {
                 <option value="90"/>
                 <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'backgroundRepeatTickmarks',
         type:"range"
         },
         {
@@ -89,6 +91,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'backgroundImageTickmarks',
 
         }
         ,
@@ -116,6 +119,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'colorTickmarks',
         },
         {
          id:5,
@@ -124,7 +128,7 @@ const initialState = {
          label: 'Blur',
          min:0,
          max:10,
-         step:1,
+         step:.5,
          suffix:'',
          value: 0,
          type:"range",
@@ -141,6 +145,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'blurTickmarks',
 
         },
         {
@@ -167,6 +172,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'saturateTickmarks',
 
         },
         {
@@ -193,6 +199,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'contrastTickmarks',
 
         },
         {
@@ -219,7 +226,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
-
+            datalistId:'brightnessTickmarks',
         },
         {
          id:9,
@@ -245,6 +252,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'sepiaTickmarks',
 
         },
         {
@@ -271,6 +279,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'grayScaleTickmarks',
 
         },
         {
@@ -297,6 +306,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'urlTickmarks',
 
         },
         {
@@ -323,6 +333,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'invertTickmarks',
 
         },
         {
@@ -349,6 +360,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'hueRotateTickmarks',
 
         },
         {
@@ -375,6 +387,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'backgroundSizeTickmarks',
 
         },
         {
@@ -413,6 +426,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'backgroundBlendModeTickmarks',
 
         },
         {
@@ -457,6 +471,7 @@ const initialState = {
                    <option value="90"/>
                    <option value="100" label="100%"/>
                </datalist>`,
+            datalistId:'mixBlendModeTickmarks',
 
         }
     ]
