@@ -17,9 +17,8 @@ return (
                       id = item.id,
                       filter = item.filterName;
                 return(
-                <Fragment>
+                <Fragment key={index}>
                     <option value={valKey}
-                            key={index}
                     >
                         {val}
                     </option>

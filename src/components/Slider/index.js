@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Slider = ({filtersData, chosenLayerId, chosenFilter, layers, set_stl, vals}) => {
+const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layers, set_stl, vals}) => {
     console.log( layers);
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0],
           layerChoiceFilter = layers.filter(layer => (layer.id !== chosenLayerId)),
@@ -37,6 +37,7 @@ const Slider = ({filtersData, chosenLayerId, chosenFilter, layers, set_stl, vals
                            this.inputPhysical.value,
                            chosenFilter,
                            chosenLayerId,
+                           chosenLayerIdx,
                            layers)
                    }}
 

@@ -20,7 +20,7 @@ const LayerIndicatorButtonElement = styled.button`
 const LayerIndicatorButton = (props) => {
     let activeClass = (props.chosenLayerId === props.layerProps.id) ? 'active' : '';
     return (
-        <li className={`layer-indicator-button-list-item ${activeClass}`} key={props.index} onClick={() => props.choose_layer(props.layerProps.id)}>
+        <li className={`layer-indicator-button-list-item ${activeClass}`} key={props.index} onClick={() => props.choose_layer(props.layerProps.id,props.index)}>
             <LayerIndicatorButtonWrp className="layer-indicator-button-wrp">
                 <LayerIndicatorButtonElement className="layer-indicator-button">
                     {props.index}

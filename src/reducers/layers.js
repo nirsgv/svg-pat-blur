@@ -19,6 +19,7 @@ const initialChosenLayedId = uuid.v4();
 const initialState = {
     layerCount: 2,
     chosenLayerId: initialChosenLayedId,
+    chosenLayerIdx: 0,
     layers: [
         {
             id: initialChosenLayedId,
@@ -85,7 +86,8 @@ export default (state = initialState, action) => {
       case CHOOSE_LAYER:
           return {
               ...state,
-              chosenLayerId: action.payload
+              chosenLayerId: action.payload[0],
+              chosenLayerIdx: action.payload[1]
           };
       case SET_STL:
           return {
@@ -140,23 +142,20 @@ export const delete_layer = (id) => {
     }
 };
 
-export const choose_layer = (id) => {
+export const choose_layer = (id,idx) => {
+    console.log(id,idx);
     return dispatch => {
         dispatch({
             type: CHOOSE_LAYER,
-            payload: id
+            payload: [id,idx]
         })
     }
 };
 
-export const set_stl = (val,chosenFilter,chosenLayerId,layers) => {
+export const set_stl = (val,chosenFilter,chosenLayerId,chosenLayerIdx,layers) => {
     //console.log(val,chosenFilter,chosenLayerId,layers);
+    console.log(chosenLayerIdx);
     let newLayers = layers;
-
-    //get ArrKey from layers
-    let ArrKey = newLayers.filter((layer,index,arr) => {if(layer.id === chosenLayerId){return layer.id}});
-    //console.log(newLayers);
-    console.log(ArrKey[0].id);
     newLayers[0].stl[chosenFilter] = val;
     //console.log(newLayers);
     return dispatch => {

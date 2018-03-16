@@ -50,6 +50,7 @@ const App = (props) => {
         filtersData,
         chosenFilter,
         chosenLayerId,
+        chosenLayerIdx,
         set_stl,
     } = props;
 
@@ -84,6 +85,7 @@ console.log(layers);
                      <Slider
                          chosenFilter={chosenFilter}
                          chosenLayerId={chosenLayerId}
+                         chosenLayerIdx={chosenLayerIdx}
                          filtersData={filtersData}
                          layers={layers}
                          set_stl={set_stl}
