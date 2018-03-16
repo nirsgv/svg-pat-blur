@@ -17,7 +17,7 @@ const initialState = {
          step:.01,
          suffix:'',
          value: 1,
-         list:`<datalist id="opacityTickmarks">
+         datalist:`<datalist id="opacityTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -51,7 +51,7 @@ const initialState = {
          step:1,
          suffix:'',
          value: 5,
-         list:`<datalist id="backgroundRepeatTickmarks">
+         datalist:`<datalist id="backgroundRepeatTickmarks">
                 <option value="0" label="0%"/>
                 <option value="10"/>
                 <option value="20"/>
@@ -78,7 +78,7 @@ const initialState = {
          suffix:'',
          value: 5,
          type:"range",
-         list:`<datalist id="backgroundImageTickmarks">
+         datalist:`<datalist id="backgroundImageTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -106,7 +106,7 @@ const initialState = {
          suffix:'',
          value: 5,
          type:"range",
-         list:`<datalist id="colorTickmarks">
+         datalist:`<datalist id="colorTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -132,7 +132,7 @@ const initialState = {
          suffix:'',
          value: 0,
          type:"range",
-         list:`<datalist id="blurTickmarks">
+         datalist:`<datalist id="blurTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -159,7 +159,7 @@ const initialState = {
          suffix:'',
          value: 0,
          type:"range",
-         list:`<datalist id="saturateTickmarks">
+         datalist:`<datalist id="saturateTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -186,7 +186,7 @@ const initialState = {
          suffix:'',
          value: 100,
          type:"range",
-         list:`<datalist id="contrastTickmarks">
+         datalist:`<datalist id="contrastTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -213,7 +213,7 @@ const initialState = {
          suffix:'',
          value: 100,
          type:"range",
-         list:`<datalist id="brightnessTickmarks">
+         datalist:`<datalist id="brightnessTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -239,7 +239,7 @@ const initialState = {
          suffix:'',
          value: 7,
          type:"range",
-         list:`<datalist id="sepiaTickmarks">
+         datalist:`<datalist id="sepiaTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -266,7 +266,7 @@ const initialState = {
          suffix:'',
          value: 0,
          type:"range",
-         list:`<datalist id="grayScaleTickmarks">
+         datalist:`<datalist id="grayScaleTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -293,7 +293,7 @@ const initialState = {
          suffix:'',
          value: 6,
          type:"range",
-         list:`<datalist id="urlTickmarks">
+         datalist:`<datalist id="urlTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -320,7 +320,7 @@ const initialState = {
          suffix:'',
          value: 5,
          type:"range",
-         list:`<datalist id="invertTickmarks">
+         datalist:`<datalist id="invertTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -347,7 +347,7 @@ const initialState = {
          suffix:'',
          value: 4,
          type:"range",
-         list:`<datalist id="hueRotateTickmarks">
+         datalist:`<datalist id="hueRotateTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -374,7 +374,7 @@ const initialState = {
          suffix:'',
          value: 3,
          type:"range",
-         list:`<datalist id="backgroundSizeTickmarks">
+         datalist:`<datalist id="backgroundSizeTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -413,7 +413,7 @@ const initialState = {
          suffix:'',
          value: 2,
          type:"range",
-         list:`<datalist id="backgroundBlendModeTickmarks">
+         datalist:`<datalist id="backgroundBlendModeTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
@@ -458,7 +458,7 @@ const initialState = {
          suffix:'',
          value: 1,
          type:"range",
-         list:`<datalist id="mixBlendModeTickmarks">
+         datalist:`<datalist id="mixBlendModeTickmarks">
                    <option value="0" label="0%"/>
                    <option value="10"/>
                    <option value="20"/>
