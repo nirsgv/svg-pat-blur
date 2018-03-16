@@ -9,6 +9,7 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
         max,
         step,
         list,
+        label,
         filterName,
     } = filterChoice;
     return (
@@ -26,6 +27,7 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
                 <option value="90"/>
                 <option value="100" label="100%"/>
             </datalist>
+            <label>{label}</label>
             <input type={type}
                    min={min}
                    max={max}
