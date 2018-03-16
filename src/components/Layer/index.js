@@ -11,6 +11,7 @@ const StyledImgLayer = styled.img`
   background-blend-mode: ${props => props.lp.backgroundBlendMode};
   background-size: ${props => props.lp.backgroundSize}%;
   background-image: url('${props => props.lp.backgroundImage}');
+  background-position: center;
   filter: blur(${props => props.lp.blur}px)
           brightness(${props => props.lp.brightness}%)
           hue-rotate(${props => props.lp.hueRotate}deg)
