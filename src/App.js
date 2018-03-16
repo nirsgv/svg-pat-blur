@@ -20,6 +20,7 @@ import {
     delete_layer,
     choose_layer,
     set_stl,
+    choose_select_option,
 } from './reducers/layers'
 import {
     choose_filter
@@ -53,6 +54,7 @@ const App = (props) => {
         chosenLayerId,
         chosenLayerIdx,
         set_stl,
+        choose_select_option,
     } = props;
 
 
@@ -91,6 +93,7 @@ console.log(layers);
                          filtersData={filtersData}
                          layers={layers}
                          set_stl={set_stl}
+                         choose_select_option={choose_select_option}
                          vals={layers[chosenLayerIdxe][chosenFilter]}
                      />
                  </div>
@@ -108,6 +111,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     decrement,
     change_range_amt,
     set_stl,
+    choose_select_option,
     changePage: () => push('/about-us')
 }, dispatch);
 

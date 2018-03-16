@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layers, set_stl, vals}) => {
+const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layers, set_stl, choose_select_option, vals}) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
     const {
         type,
@@ -11,13 +11,13 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
         label,
         filterName,
         modes,
+        string,
     } = filterChoice;
     const switchInputMode = modes ?
-
         <Fragment>
-            <select id={filterName}
+            <select id={string}
                     ref={(input)=> this.selectModes = input}
-                    //onChange={() => choose_filter(this.selectOption.value)}
+                    onChange={() => choose_select_option(this.selectModes.value,chosenLayerIdx,filterName,layers)}
             >
                 {modes.map((item,index,array)=>{
                     return(
@@ -31,7 +31,7 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
         </Fragment>
 
      : <input type={type}
-              id={filterName}
+              id={string}
                 min={min}
                 max={max}
                 step={step}
@@ -50,8 +50,8 @@ const Slider = ({filtersData, chosenLayerId, chosenLayerIdx, chosenFilter, layer
     />;
     return (
 
-        <div className={`${filterName}-wrp`}>
-            <label htmlFor={filterName}>
+        <div className={`${string}-wrp`}>
+            <label htmlFor={string}>
                 {label}
             </label>
             {switchInputMode}

@@ -4,6 +4,7 @@ export const ADD_LAYER = 'layers/ADD_LAYER';
 export const DELETE_LAYER = 'layers/DELETE_LAYER';
 export const CHOOSE_LAYER = 'layers/CHOOSE_LAYER';
 export const SET_STL = 'layers/SET_STL';
+export const CHOOSE_SELECT_OPTION = 'layers/CHOOSE_SELECT_OPTION';
 
 
 const tmpImgArray = [
@@ -96,6 +97,11 @@ export default (state = initialState, action) => {
               ...state,
               layers:action.payload
           };
+      case CHOOSE_SELECT_OPTION:
+          return {
+              ...state,
+              layers:action.payload
+          };
     default:
       return state;
   }
@@ -155,31 +161,40 @@ export const choose_layer = (id,idx) => {
     }
 };
 
+export const choose_select_option = (val,idx,filterName,layers) => {
+    console.log(val,idx,filterName,layers);
+    const specLayer = layers[idx],
+        assignedSpecLayer = Object.assign({}, specLayer, {
+            stl: {
+                ...specLayer.stl,
+                [filterName]: val
+            }
+        });
+    const newLayers = layers.slice();
+    newLayers[idx] = assignedSpecLayer;
+    return dispatch => {
+        dispatch({
+            type: CHOOSE_SELECT_OPTION,
+            payload: newLayers,
+        })
+    }
+};
+
 export const set_stl = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) => {
-    const specLayer = layers[chosenLayerIdx];
-
- //   newLayers[chosenLayerIdx].stl[filterName] = val;
-
-    const assignedSpecLayer = Object.assign({}, specLayer, {
+    const specLayer = layers[chosenLayerIdx],
+          assignedSpecLayer = Object.assign({}, specLayer, {
         stl: {
             ...specLayer.stl,
             [filterName]: val
         }
     });
-
-    const newLayers = layers;
+    const newLayers = layers.slice();
         newLayers[chosenLayerIdx] = assignedSpecLayer;
-
+/*
     console.group();
-        console.log(val);
-        console.log(chosenLayerIdx);
-        console.log(filterName);
-        console.log(specLayer);
-        console.log(assignedSpecLayer);
-        console.log(layers);
-        console.log(newLayers);
+        console.log(val);console.log(chosenLayerIdx);console.log(filterName);console.log(specLayer);console.log(assignedSpecLayer);console.log(layers);console.log(newLayers);
     console.groupEnd();
-
+*/
     return dispatch => {
         dispatch({
             type: SET_STL,
