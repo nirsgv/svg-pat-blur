@@ -196,12 +196,17 @@ body {
     height: 150px;
     padding: 0;
 }
-.five input {
+.five input[type="range"] {
     width: 150px;
     height: 20px;
     margin: 0;
     transform-origin: 75px 75px;
     transform: rotate(-90deg);
+}
+.five input[type="number"] {
+    width: 50px;
+    height: 20px;
+    margin: 0;
 }
 .layer-indicator-button-list-item.active{
     background-color: blue;

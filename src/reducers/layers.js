@@ -213,10 +213,11 @@ export const set_stl = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) =>
 export const increment_slider = (val,filterName,chosenLayerIdx=0,layers,step) => {
     const specLayer = layers[chosenLayerIdx],
           tmpVal = Number(val)+step,
+          tmpValFixed = tmpVal.toFixed(2),
           assignedSpecLayer = Object.assign({}, specLayer, {
         stl: {
             ...specLayer.stl,
-            [filterName]: tmpVal
+            [filterName]: tmpValFixed
         }
     });
     const newLayers = layers.slice();
@@ -233,10 +234,11 @@ export const increment_slider = (val,filterName,chosenLayerIdx=0,layers,step) =>
 export const decrement_slider = (val,filterName,chosenLayerIdx=0,layers,step) => {
     const specLayer = layers[chosenLayerIdx],
         tmpVal = Number(val)-step,
+        tmpValFixed = tmpVal.toFixed(2),
         assignedSpecLayer = Object.assign({}, specLayer, {
         stl: {
             ...specLayer.stl,
-            [filterName]: tmpVal
+            [filterName]: tmpValFixed
         }
     });
     const newLayers = layers.slice();

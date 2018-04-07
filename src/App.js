@@ -3,6 +3,7 @@ import Layers from './containers/layers';
 import Legend from './containers/legend';
 import Slider from './components/Slider';
 import Incrementor from './components/Incrementor';
+import DigitIncrementor from './components/DigitIncrementor';
 import ChooseFilter from './components/ChooseFilter';
 import LayerQuanityControl from './components/LayerQuanityControl';
 import './App.css';
@@ -109,8 +110,15 @@ console.log(layers);
                          chosenLayerIdx={chosenLayerIdxe}
                          filtersData={filtersData}
                          layers={layers}
-                         set_stl={set_stl}
-                         vals={layers[chosenLayerIdxe][chosenFilter]}
+                         increment_slider={increment_slider}
+                         decrement_slider={decrement_slider}
+                     />
+                     <DigitIncrementor
+                         chosenFilter={chosenFilter}
+                         chosenLayerId={chosenLayerId}
+                         chosenLayerIdx={chosenLayerIdxe}
+                         filtersData={filtersData}
+                         layers={layers}
                          increment_slider={increment_slider}
                          decrement_slider={decrement_slider}
                      />
