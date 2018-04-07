@@ -202,11 +202,6 @@ export const set_stl = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) =>
     });
     const newLayers = layers.slice();
         newLayers[chosenLayerIdx] = assignedSpecLayer;
-/*
-    console.group();
-        console.log(val);console.log(chosenLayerIdx);console.log(filterName);console.log(specLayer);console.log(assignedSpecLayer);console.log(layers);console.log(newLayers);
-    console.groupEnd();
-*/
     return dispatch => {
         dispatch({
             type: SET_STL,
@@ -215,9 +210,9 @@ export const set_stl = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) =>
     }
 };
 
-export const increment_slider = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) => {
+export const increment_slider = (val,filterName,chosenLayerIdx=0,layers,step) => {
     const specLayer = layers[chosenLayerIdx],
-          tmpVal = Number(val)+.1,
+          tmpVal = Number(val)+step,
           assignedSpecLayer = Object.assign({}, specLayer, {
         stl: {
             ...specLayer.stl,
@@ -227,17 +222,17 @@ export const increment_slider = (val,filterName,chosenLayerId,chosenLayerIdx=0,l
     const newLayers = layers.slice();
         newLayers[chosenLayerIdx] = assignedSpecLayer;
 
-    return dispatch => {
+        return dispatch => {
         dispatch({
-            type: SET_STL,
+            type: INCREMENT_SLIDER,
             payload: newLayers,
         })
     }
 };
 
-export const decrement_slider = (val,filterName,chosenLayerId,chosenLayerIdx=0,layers) => {
+export const decrement_slider = (val,filterName,chosenLayerIdx=0,layers,step) => {
     const specLayer = layers[chosenLayerIdx],
-        tmpVal = Number(val)-.1,
+        tmpVal = Number(val)-step,
         assignedSpecLayer = Object.assign({}, specLayer, {
         stl: {
             ...specLayer.stl,
@@ -246,10 +241,9 @@ export const decrement_slider = (val,filterName,chosenLayerId,chosenLayerIdx=0,l
     });
     const newLayers = layers.slice();
         newLayers[chosenLayerIdx] = assignedSpecLayer;
-
     return dispatch => {
         dispatch({
-            type: SET_STL,
+            type: DECREMENT_SLIDER,
             payload: newLayers,
         })
     }

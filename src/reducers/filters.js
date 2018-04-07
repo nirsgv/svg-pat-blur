@@ -14,7 +14,7 @@ const initialState = {
          label: 'Opacity',
          min:0,
          max:1,
-         step:.01,
+         step:.1,
          suffix:'',
          value: 1,
          datalist:`<datalist id="opacityTickmarks">
@@ -370,7 +370,7 @@ const initialState = {
          label: 'Background size',
          min:1,
          max:100,
-         step:1,
+         step:5,
          suffix:'',
          value: 3,
          type:"range",

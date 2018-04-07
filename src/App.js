@@ -2,6 +2,7 @@ import React from 'react';
 import Layers from './containers/layers';
 import Legend from './containers/legend';
 import Slider from './components/Slider';
+import Incrementor from './components/Incrementor';
 import ChooseFilter from './components/ChooseFilter';
 import LayerQuanityControl from './components/LayerQuanityControl';
 import './App.css';
@@ -98,6 +99,17 @@ console.log(layers);
                          layers={layers}
                          set_stl={set_stl}
                          choose_select_option={choose_select_option}
+                         vals={layers[chosenLayerIdxe][chosenFilter]}
+                         increment_slider={increment_slider}
+                         decrement_slider={decrement_slider}
+                     />
+                     <Incrementor
+                         chosenFilter={chosenFilter}
+                         chosenLayerId={chosenLayerId}
+                         chosenLayerIdx={chosenLayerIdxe}
+                         filtersData={filtersData}
+                         layers={layers}
+                         set_stl={set_stl}
                          vals={layers[chosenLayerIdxe][chosenFilter]}
                          increment_slider={increment_slider}
                          decrement_slider={decrement_slider}

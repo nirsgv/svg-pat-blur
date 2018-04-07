@@ -62,35 +62,17 @@ const Slider = ({filtersData,
                        )
                    }}
             />
-            <button id="increment"
-                    onClick={(event) => {
-                       increment_slider(
-                           this.inputPhysical.value,
-                           filterName,
-                           chosenLayerId,
-                           chosenLayerIdx,
-                           layers
-                       )
-                   }}><span>+</span></button>
-            <button id="decrement"
-                    onClick={(event) => {
-                       decrement_slider(
-                           this.inputPhysical.value,
-                           filterName,
-                           chosenLayerId,
-                           chosenLayerIdx,
-                           layers
-                       )
-                   }}><span>-</span></button>
         </Fragment>;
     return (
 
-        <div className={`${string}-wrp`}>
+        <div className={`label-wrp ${string}-wrp`}>
             <label htmlFor={string}>
                 {label}
             </label>
+
             {switchInputMode}
         </div>
+
     )
 };
 
