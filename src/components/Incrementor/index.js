@@ -1,11 +1,6 @@
 import React from 'react';
+import { getObjVal } from '../../helpers.js';
 
-const getObjVal = (chosenLayerId, layers, chosenFilter) => {
-    const chosensObjStl = (layers.filter(layer => layer.id === chosenLayerId)[0]).stl;
-    const chosensObjStlVal = chosensObjStl[chosenFilter];
-    console.log(chosensObjStl, chosensObjStlVal);
-    return chosensObjStlVal;
-};
 const Incrementor = ({
                          filtersData,
                          chosenLayerId,

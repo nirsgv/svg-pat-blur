@@ -100,7 +100,6 @@ console.log(layers);
                          layers={layers}
                          set_stl={set_stl}
                          choose_select_option={choose_select_option}
-                         vals={layers[chosenLayerIdxe][chosenFilter]}
                          increment_slider={increment_slider}
                          decrement_slider={decrement_slider}
                      />

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Parser from 'html-react-parser';
-
+import { getObjVal } from '../../helpers.js';
 const Slider = ({filtersData,
                  chosenLayerId,
                  chosenLayerIdx,
@@ -10,7 +10,7 @@ const Slider = ({filtersData,
                  choose_select_option,
                  increment_slider,
                  decrement_slider,
-                 vals}) => {
+                 }) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
     const {
         type,
@@ -24,6 +24,7 @@ const Slider = ({filtersData,
         modes,
         string,
     } = filterChoice;
+    const theVal = getObjVal(chosenLayerId, layers, chosenFilter);
     const switchInputMode = modes ?
         <Fragment>
             <select id={string}
@@ -50,7 +51,7 @@ const Slider = ({filtersData,
                    max={max}
                    step={step}
                    list={datalistId}
-                   value={vals}
+                   value={theVal}
                    ref={(input) => this.inputPhysical = input}
                    onChange={(event) => {
                        set_stl(
