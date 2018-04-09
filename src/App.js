@@ -2,6 +2,7 @@ import React from 'react';
 import Layers from './containers/layers';
 import Legend from './containers/legend';
 import Slider from './components/Slider';
+import Popup from './components/popup';
 import Incrementor from './components/Incrementor';
 import DigitIncrementor from './components/DigitIncrementor';
 import ChooseFilter from './components/ChooseFilter';
@@ -21,7 +22,8 @@ const mapStateToProps = state => (
     chosenFilter: state.filters.chosenFilter,
     chosenLayerId: state.layers.chosenLayerId,
     chosenLayerIdx: state.layers.chosenLayerIdx,
-});
+    isBksSelectionOn: state.bkgSelectionPopup.open,
+    });
 const App = (props) => {
     const {
         count,
@@ -58,6 +60,7 @@ console.log(layers);
                          layers={layers}
                      />
                  </div>
+                {props.isBksSelectionOn && <Popup />}
             </div>
         </div>)
 };

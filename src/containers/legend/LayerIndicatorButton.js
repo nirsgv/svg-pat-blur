@@ -24,7 +24,9 @@ const LayerIndicatorButton = (props) => {
             <LayerIndicatorButtonWrp className="layer-indicator-button-wrp">
                 <LayerIndicatorButtonElement className="layer-indicator-button">
                     {props.index}
+{/*
                     {props.layerProps.id}
+*/}
                 </LayerIndicatorButtonElement>
             </LayerIndicatorButtonWrp>
         </li>

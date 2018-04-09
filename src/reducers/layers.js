@@ -206,6 +206,8 @@ export const choose_layer = (id,idx) => {
     }
 };
 
+
+
 export const move_up = (items, firstIndex, secondIndex) => {
     console.log('action fired');
     console.log(items);

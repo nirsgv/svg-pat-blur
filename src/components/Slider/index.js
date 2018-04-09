@@ -7,9 +7,15 @@ import {
     set_stl,
     choose_select_option,
 } from "../../reducers/layers";
+import {
+    isBksSelectionOn,
+    open_bkg_select_popup,
+} from "../../reducers/bkgSelectionPopup";
 const Slider = ({filtersData,
                  chosenLayerId,
                  chosenLayerIdx,
+                    isBksSelectionOn,
+                    open_bkg_select_popup,
                  chosenFilter,
                  layers,
                  set_stl,
@@ -29,7 +35,9 @@ const Slider = ({filtersData,
         string,
     } = filterChoice;
     const theVal = getObjVal(chosenLayerId, layers, chosenFilter);
-    const switchInputMode = modes ?
+    const switchInputMode =
+        filterName !== 'backgroundImage' ?  // HERE filterName is not 'backgroundImage'
+        modes ? // HERE modes is TRUE
         <Fragment>
             <select id={string}
                     ref={(input) => this.selectModes = input}
@@ -47,7 +55,8 @@ const Slider = ({filtersData,
             </select>
         </Fragment>
 
-     : <Fragment>
+     : // HERE modes is FALSE
+            <Fragment>
             {Parser(datalist)}
             <input type={type}
                    id={string}
@@ -67,7 +76,17 @@ const Slider = ({filtersData,
                        )
                    }}
             />
-        </Fragment>;
+        </Fragment>
+        : // HERE !!(filterName === 'backgroundImage')
+        <Fragment>
+            <div className={`button-wrp ${!isBksSelectionOn ? 'open' : 'close'}-button`}>
+                <button value="selct bavakground" onClick={() => {open_bkg_select_popup(isBksSelectionOn)}}>
+                     {!isBksSelectionOn ? 'open' : 'close'}
+                </button>
+            </div>
+
+         </Fragment>
+    ;
     return (
 
         <div className={`label-wrp ${string}-wrp`}>
@@ -91,11 +110,13 @@ const mapStateToProps = state => (
         chosenFilter: state.filters.chosenFilter,
         chosenLayerId: state.layers.chosenLayerId,
         chosenLayerIdx: state.layers.chosenLayerIdx,
+        isBksSelectionOn: state.bkgSelectionPopup.open
     });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     set_stl,
     choose_select_option,
+    open_bkg_select_popup,
 }, dispatch);
 
 
