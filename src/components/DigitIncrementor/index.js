@@ -7,10 +7,6 @@ const DigitIncrementor = ({
                          chosenLayerIdx,
                          chosenFilter,
                          layers,
-                         set_stl,
-                         choose_select_option,
-                         increment_slider,
-                         decrement_slider,
                      }) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
     const {

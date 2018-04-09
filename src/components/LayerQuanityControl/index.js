@@ -1,13 +1,19 @@
 import React, { Fragment } from 'react';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
+
+import {
+    add_layer,
+    delete_layer,
+    choose_layer,
+} from "../../reducers/layers";
 
 const LayerQuanityControl = (props) => {
 const {
     add_layer,
-    increment,
     delete_layer,
     choose_layer,
-    decrement,
     layers,
 } = props;
 return (
@@ -16,7 +22,6 @@ return (
 
         <button id="plus" onClick={(event) => {
             add_layer();
-            increment();
             choose_layer(layers[layers.length-1].id);
         }}>+
         </button>
@@ -24,16 +29,39 @@ return (
 
     <div className="item three">
     <button id="minus" onClick={(event) => {
-    (layers.length > 0) && //condition for both actions
-    [delete_layer(
-        (layers[layers.length - 1].id)
-    ),
-        decrement()];
-}}>-
+    //condition for both actions
+        const func = () => {
+            delete_layer((layers[layers.length - 1].id));
+            choose_layer(layers[layers.length-2].id);
+        };
+        (layers.length > 1) && func();
+    }}>-
 </button>
 </div>
         </Fragment>
 )
 }
+const mapStateToProps = state => (
+    {
+        layers: state.layers.layers,
+        layerCount: state.layers.layerCount,
+        count: state.counter.count,
+        opacityAmount: state.ranger.opacityAmount,
+        filtersData: state.filters,
+        chosenFilter: state.filters.chosenFilter,
+        chosenLayerId: state.layers.chosenLayerId,
+        chosenLayerIdx: state.layers.chosenLayerIdx,
+    });
 
-export default LayerQuanityControl;
+const mapDispatchToProps = dispatch => bindActionCreators({
+    add_layer,
+    delete_layer,
+    choose_layer,
+}, dispatch);
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LayerQuanityControl);
+

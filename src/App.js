@@ -10,27 +10,8 @@ import './App.css';
 import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {
-    increment,
-    decrement,
-} from './reducers/counter'
-import {
-    change_range_amt
-} from './reducers/ranger'
-import {
-    add_layer,
-    delete_layer,
-    choose_layer,
-    set_stl,
-    choose_select_option,
-    increment_slider,
-    decrement_slider,
-} from './reducers/layers'
-import {
-    choose_filter
-} from './reducers/filters'
+
 const mapStateToProps = state => (
-    //console.log(state.layers.layers[0].stl.opacity),
     {
     layers: state.layers.layers,
     layerCount: state.layers.layerCount,
@@ -42,28 +23,15 @@ const mapStateToProps = state => (
     chosenLayerIdx: state.layers.chosenLayerIdx,
 });
 const App = (props) => {
-
     const {
-        add_layer,
         count,
         opacityAmount,
-        increment,
-        delete_layer,
-        choose_layer,
-        choose_filter,
-        decrement,
         layers,
         filtersData,
         chosenFilter,
         chosenLayerId,
         chosenLayerIdx,
-        set_stl,
-        choose_select_option,
-        increment_slider,
-        decrement_slider,
     } = props;
-
-
 console.log(layers);
     const chosenLayerIdxe = chosenLayerIdx ? chosenLayerIdx : 0;
         return (
@@ -76,72 +44,27 @@ console.log(layers);
                 <h1 className="App-title">{count} {opacityAmount}</h1>
                 <h1 className="App-title">{opacityAmount}</h1>
             </header>
-
             <div id="content">
-                <LayerQuanityControl
-                    layers={layers}
-                    choose_layer={choose_layer}
-                    add_layer={add_layer}
-                    delete_layer={delete_layer}
-                    increment={increment}
-                    decrement={decrement}
-                />
-                 <ChooseFilter
-                     choose_filter={choose_filter}
-                     filtersData={filtersData}
-                     layers={layers}
-                 />
+                 <LayerQuanityControl />
+                 <ChooseFilter />
                  <div className="item five">
-                     <Slider
-                         chosenFilter={chosenFilter}
-                         chosenLayerId={chosenLayerId}
-                         chosenLayerIdx={chosenLayerIdxe}
-                         filtersData={filtersData}
-                         layers={layers}
-                         set_stl={set_stl}
-                         choose_select_option={choose_select_option}
-                         increment_slider={increment_slider}
-                         decrement_slider={decrement_slider}
-                     />
-                     <Incrementor
-                         chosenFilter={chosenFilter}
-                         chosenLayerId={chosenLayerId}
-                         chosenLayerIdx={chosenLayerIdxe}
-                         filtersData={filtersData}
-                         layers={layers}
-                         increment_slider={increment_slider}
-                         decrement_slider={decrement_slider}
-                     />
+                     <Slider />
+                     <Incrementor />
                      <DigitIncrementor
                          chosenFilter={chosenFilter}
                          chosenLayerId={chosenLayerId}
                          chosenLayerIdx={chosenLayerIdxe}
                          filtersData={filtersData}
                          layers={layers}
-                         increment_slider={increment_slider}
-                         decrement_slider={decrement_slider}
                      />
                  </div>
             </div>
         </div>)
 };
 
-
 const mapDispatchToProps = dispatch => bindActionCreators({
-    add_layer,
-    delete_layer,
-    choose_layer,
-    choose_filter,
-    increment,
-    decrement,
-    change_range_amt,
-    set_stl,
-    choose_select_option,
-    increment_slider,
-    decrement_slider,
     changePage: () => push('/about-us')
 }, dispatch);
-
 
 export default connect(
     mapStateToProps,

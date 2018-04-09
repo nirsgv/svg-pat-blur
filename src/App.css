@@ -221,3 +221,9 @@ button#increment,button#decrement {
     height: 20px;
     background-color: REBECCAPURPLE;
 }
+button.layer-indicator-button{
+    font-size: 10px;
+}
+.move-up-element.deactive,.move-down-element.deactive{
+        color: #aaa;
+}

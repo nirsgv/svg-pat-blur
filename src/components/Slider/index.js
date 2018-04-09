@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react';
 import Parser from 'html-react-parser';
 import { getObjVal } from '../../helpers.js';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {
+    set_stl,
+    choose_select_option,
+} from "../../reducers/layers";
 const Slider = ({filtersData,
                  chosenLayerId,
                  chosenLayerIdx,
@@ -8,8 +14,6 @@ const Slider = ({filtersData,
                  layers,
                  set_stl,
                  choose_select_option,
-                 increment_slider,
-                 decrement_slider,
                  }) => {
     const filterChoice = filtersData.filtersData.filter(layer => layer.filterName === filtersData.chosenFilter)[0];
     const {
@@ -77,5 +81,26 @@ const Slider = ({filtersData,
     )
 };
 
+const mapStateToProps = state => (
+    {
+        layers: state.layers.layers,
+        layerCount: state.layers.layerCount,
+        count: state.counter.count,
+        opacityAmount: state.ranger.opacityAmount,
+        filtersData: state.filters,
+        chosenFilter: state.filters.chosenFilter,
+        chosenLayerId: state.layers.chosenLayerId,
+        chosenLayerIdx: state.layers.chosenLayerIdx,
+    });
 
-export default Slider;
+const mapDispatchToProps = dispatch => bindActionCreators({
+    set_stl,
+    choose_select_option,
+}, dispatch);
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Slider);
+

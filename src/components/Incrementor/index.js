@@ -1,13 +1,19 @@
 import React from 'react';
 import { getObjVal } from '../../helpers.js';
 
+import {
+    decrement_slider,
+    increment_slider,
+} from "../../reducers/layers";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+
 const Incrementor = ({
                          filtersData,
                          chosenLayerId,
                          chosenLayerIdx,
                          chosenFilter,
                          layers,
-                         set_stl,
                          choose_select_option,
                          increment_slider,
                          decrement_slider,
@@ -53,4 +59,28 @@ const Incrementor = ({
         </div>
     )
 };
-export default Incrementor;
+
+const mapStateToProps = state => (
+    {
+        layers: state.layers.layers,
+        layerCount: state.layers.layerCount,
+        count: state.counter.count,
+        opacityAmount: state.ranger.opacityAmount,
+        filtersData: state.filters,
+        chosenFilter: state.filters.chosenFilter,
+        chosenLayerId: state.layers.chosenLayerId,
+        chosenLayerIdx: state.layers.chosenLayerIdx,
+    });
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    increment_slider,
+    decrement_slider,
+}, dispatch);
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Incrementor);
+
+

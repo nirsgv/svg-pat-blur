@@ -1,5 +1,12 @@
 import uuid from 'uuid';
 import rndArr from '../helpers';
+import DIAGONAL_SVG from '../assets/img/diagonal.svg';
+import FULL_DIAGONAL_SVG from '../assets/img/full-diagonal.svg';
+import FULL_SQUARE_TILE_SVG from '../assets/img/full-square-tile.svg';
+import HORIZONTAL_SVG from '../assets/img/horizontal.svg';
+import POINTS_TILE_SVG from '../assets/img/points-tile.svg';
+import SQUARE_TILE_SVG from '../assets/img/square-tile.svg';
+import VERTICAL_SVG from '../assets/img/vertical.svg';
 export const ADD_LAYER = 'layers/ADD_LAYER';
 export const DELETE_LAYER = 'layers/DELETE_LAYER';
 export const CHOOSE_LAYER = 'layers/CHOOSE_LAYER';
@@ -7,7 +14,19 @@ export const SET_STL = 'layers/SET_STL';
 export const CHOOSE_SELECT_OPTION = 'layers/CHOOSE_SELECT_OPTION';
 export const INCREMENT_SLIDER = 'layers/INCREMENT_SLIDER';
 export const DECREMENT_SLIDER = 'layers/DECREMENT_SLIDER';
+export const MOVE_UP = 'layers/MOVE_UP';
 
+const FAKE_SVG =
+`
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2">
+    <defs>
+        <style>.cls-1{fill:none;stroke:#999;}</style>
+    </defs>
+    <title>square-tile</title>
+    <desc>square-tile</desc>
+    <rect class="cls-1"  x="0" y="0" width="1" height="1"/>
+</svg>
+`;
 
 const tmpImgArray = [
     'http://cdn-img.health.com/sites/default/files/styles/medium_16_9/public/styles/main/public/strawberry-seeds-crohns-400x400.jpg?itok=0cqj-sNb',
@@ -15,7 +34,15 @@ const tmpImgArray = [
     'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/137301.jpg?output-format=webp&output-quality=60&resize=1000:*',
     'https://images-na.ssl-images-amazon.com/images/I/71ljdtdgHjL._SL1200_.jpg',
     'http://baketheneat.com/wp-content/uploads/2017/06/Peanut-Butter-and-Strawberry-Recipe-Images.jpg',
-    'https://cdn.pixabay.com/photo/2018/02/25/22/29/strawberry-3181926__340.jpg'
+    'https://cdn.pixabay.com/photo/2018/02/25/22/29/strawberry-3181926__340.jpg',
+    DIAGONAL_SVG,
+    FULL_DIAGONAL_SVG,
+    FULL_SQUARE_TILE_SVG,
+    HORIZONTAL_SVG,
+    POINTS_TILE_SVG,
+    SQUARE_TILE_SVG,
+    VERTICAL_SVG,
+    FAKE_SVG,
 ];
 const initialChosenLayedId = uuid.v4();
 
@@ -111,6 +138,12 @@ export default (state = initialState, action) => {
           };
       case DECREMENT_SLIDER:
           return {
+      ...state,
+              layers:action.payload
+          };
+      case MOVE_UP:
+          console.log('reducer fired');
+          return {
               ...state,
               layers:action.payload
           };
@@ -170,6 +203,32 @@ export const choose_layer = (id,idx) => {
             type: CHOOSE_LAYER,
             payload: [id,idx]
         })
+    }
+};
+
+export const move_up = (items, firstIndex, secondIndex) => {
+    console.log('action fired');
+    console.log(items);
+/*    const immutablySwapItems = (items, firstIndex, secondIndex) => {
+        const results= items.slice();
+        const firstItem = items[firstIndex];
+        results[firstIndex] = items[secondIndex];
+        results[secondIndex] = firstItem;
+        return results;
+    };*/
+   const immutablySwapItems = (items, firstIndex, secondIndex) => {
+        return items.map(function(element, index) {
+            if (index === firstIndex) return items[secondIndex];
+            else if (index === secondIndex) return items[firstIndex];
+            else return element;
+        })
+    };
+    const itemsSliced = items.slice();
+    const newLayers = immutablySwapItems(itemsSliced, firstIndex, secondIndex);
+    console.log(newLayers);
+
+    return dispatch => {
+        dispatch({type: MOVE_UP, payload: newLayers})
     }
 };
 

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import LayerIndicatorButton from './LayerIndicatorButton'
 import CloseBtn from './CloseBtn'
+import MoveUp from "./MoveUp";
 
 import {
-    delete_layer,
-    choose_layer
+delete_layer,
+choose_layer,
+move_up,
 } from '../../reducers/layers'
 
 const mapStateToProps = state => (
@@ -28,11 +30,12 @@ console.log(props.chosenLayerId),
         {
          props.layers.map((item, index, array) => {
              return (
-                        [
-                            <LayerIndicatorButton index={index} key={index} layerProps={item} choose_layer={props.choose_layer} chosenLayerId={props.chosenLayerId}/>,
-                            <CloseBtn id={item.id} key={Date.now()} delete_layer={props.delete_layer}/>
-
-                        ]
+                        <Fragment key={index}>
+                            <LayerIndicatorButton index={index} key={index} layerProps={item} choose_layer={props.choose_layer} chosenLayerId={props.chosenLayerId}/>
+                            <CloseBtn id={item.id} key={Date.now()} delete_layer={props.delete_layer} choose_layer={props.choose_layer} layers={props.layers}/>
+                            <MoveUp layers={props.layers} index={index} move_up={props.move_up} moveUp={true} greySpan={index===(array.length)-1}/>
+                            <MoveUp layers={props.layers} index={index} move_up={props.move_up} moveUp={false} greySpan={index===0}/>
+                        </Fragment>
                     )
                 }
             )
@@ -47,6 +50,7 @@ console.log(props.chosenLayerId),
 const mapDispatchToProps = dispatch => bindActionCreators({
     delete_layer,
     choose_layer,
+    move_up,
 }, dispatch);
 
 
