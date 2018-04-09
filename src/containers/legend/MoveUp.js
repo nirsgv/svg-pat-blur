@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 
 const MoveUp = ({layers, index, move_up, moveUp=true, greySpan=false}) => {
-    console.log(layers, index,move_up);
     const myIndex = index;
     return(
         <div className={`move-${moveUp?'up':'down'}-wrp`} onClick={() => {

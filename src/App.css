@@ -224,6 +224,10 @@ button#increment,button#decrement {
 button.layer-indicator-button{
     font-size: 10px;
 }
+.move-up-element,.move-down-element{
+    font-size: 10px;
+    color: #555;
+}
 .move-up-element.deactive,.move-down-element.deactive{
         color: #aaa;
 }
