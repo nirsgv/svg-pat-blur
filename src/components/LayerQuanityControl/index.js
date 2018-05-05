@@ -18,16 +18,13 @@ const {
 } = props;
 return (
     <Fragment>
-    <div className="item two">
 
         <button id="plus" onClick={(event) => {
             add_layer();
             choose_layer(layers[layers.length-1].id);
         }}>+
         </button>
-    </div>,
 
-    <div className="item three">
     <button id="minus" onClick={(event) => {
     //condition for both actions
         const func = () => {
@@ -37,7 +34,6 @@ return (
         (layers.length > 1) && func();
     }}>-
 </button>
-</div>
         </Fragment>
 )
 }

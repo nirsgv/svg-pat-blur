@@ -34,32 +34,43 @@ const App = (props) => {
         chosenLayerId,
         chosenLayerIdx,
     } = props;
-console.log(layers);
+    console.log(layers);
     const chosenLayerIdxe = chosenLayerIdx ? chosenLayerIdx : 0;
-        return (
-    <div className="App">
-            <main>
+    return (
+        <div className="App">
+            <main id="layers-wrp">
                 <Layers />
-                <Legend />
             </main>
+            <aside id="legend-wrp">
+                <Legend />
+            </aside>
+            <aside id="quanity-control-wrp">
+                <LayerQuanityControl />
+            </aside>
+            <section id="input-wrp">
+                <Slider id="slider-wrp"/>
+            </section>
+            <aside id="filter-select-wrp">
+                <ChooseFilter />
+            </aside>
+            <section id="layer-controls-wrp">
+                <Incrementor id="incrementor-wrp"/>
+                <DigitIncrementor id="digit-incrementor-wrp"
+                                  chosenFilter={chosenFilter}
+                                  chosenLayerId={chosenLayerId}
+                                  chosenLayerIdx={chosenLayerIdxe}
+                                  filtersData={filtersData}
+                                  layers={layers}
+                />
+            </section>
             <header className="App-header">
                 <h1 className="App-title">{count} {opacityAmount}</h1>
                 <h1 className="App-title">{opacityAmount}</h1>
             </header>
             <div id="content">
-                 <LayerQuanityControl />
-                 <ChooseFilter />
-                 <div className="item five">
-                     <Slider />
-                     <Incrementor />
-                     <DigitIncrementor
-                         chosenFilter={chosenFilter}
-                         chosenLayerId={chosenLayerId}
-                         chosenLayerIdx={chosenLayerIdxe}
-                         filtersData={filtersData}
-                         layers={layers}
-                     />
-                 </div>
+                <div className="item five">
+
+                </div>
                 {props.isBksSelectionOn && <Popup />}
             </div>
         </div>)
