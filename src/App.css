@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Nobile');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
 :root{
     --main-button-color: brown;
     --main-text-color: white;
 }
+body, main{
+    /*
+    font-family: 'Nobile', sans-serif;
+    */
+    font-family: 'Roboto Slab', serif;
+}
+
 aside#legend-wrp {
     position: absolute;
     z-index: 200;
@@ -42,6 +52,7 @@ section#input-wrp {
     outline: 4px dashed yellow;
     height: 180px;
 }
+
 .App {
     text-align: center;
 }
@@ -124,28 +135,52 @@ ul.layer-indicator-button-list{
 body {
     color: #fff;
     text-align: center;
-    font-family: 'Nunito Semibold';
 }
 
-#content {
-    /*
+#filter-options {
+    direction: ltr;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, minmax(150px, auto));
-    */
+    grid-template-columns: repeat(2, 100px);
+    /* grid-template-rows: repeat(2, minmax(150px, auto)); */
     max-width: 960px;
     margin: 0 auto;
-    font-family: 'Nunito Semibold';
     grid-row-gap: 10px;
     grid-column-gap: 10px;
     grid-gap: 20px;
+    -ms-flex-align: stretch;
     align-items: stretch;
     z-index: 10;
     position: absolute;
     bottom: 0;
     width: 110px;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 30px;
 }
+#filter-options li.filter-option {
+    font-size: 12px;
+    transition: all 0.1s ease-in;
+}
+#filter-options .filter-icon-wrp{
+    font-size: 13px;
+    opacity: .6;
+}
+#filter-options li.filter-option.selected {
+    font-size: 12px;
+}
+#filter-options li.filter-option .filter-name, #filter-options li.filter-option .current-value{
+    color: #ffffff88;
+}
+#filter-options li.filter-option.selected .filter-name,#filter-options li.filter-option.selected .current-value{
+    color: #ffffffff;
+}
+#filter-options li.filter-option.selected .filter-icon-wrp{
+    font-size: 18px;
+    opacity: .9;
+    transition: all 0.03s ease-in;
 
+}
 #content > div {
     background: #3bbced;
     min-height: 150px;

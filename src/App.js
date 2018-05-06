@@ -49,11 +49,6 @@ const App = (props) => {
             </aside>
             <section id="input-wrp">
                 <Slider id="slider-wrp"/>
-            </section>
-            <aside id="filter-select-wrp">
-                <ChooseFilter />
-            </aside>
-            <section id="layer-controls-wrp">
                 <Incrementor id="incrementor-wrp"/>
                 <DigitIncrementor id="digit-incrementor-wrp"
                                   chosenFilter={chosenFilter}
@@ -62,6 +57,11 @@ const App = (props) => {
                                   filtersData={filtersData}
                                   layers={layers}
                 />
+            </section>
+            <aside id="filter-select-wrp">
+                <ChooseFilter />
+            </aside>
+            <section id="layer-controls-wrp">
             </section>
             <header className="App-header">
                 <h1 className="App-title">{count} {opacityAmount}</h1>

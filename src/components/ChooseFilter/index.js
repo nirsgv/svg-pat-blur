@@ -23,6 +23,7 @@ return (
         <select id="filter-select"
                 ref={(input)=> this.selectOption = input}
                 onChange={() => choose_filter(this.selectOption.value)}
+                value="xxx"
         >
             {filtersData.filtersData.map((item,index,array)=>{
                 const val = item.string,
@@ -37,6 +38,54 @@ return (
                 </Fragment>
             )})}
         </select>
+        <ul id="filter-options"
+               // ref={(input)=> this.selectOption = input}
+
+        >
+            {filtersData.filtersData.map((item,index,array)=>{
+                let hovered = false;
+                const mouseEnter = () => {
+                    console.log('mouse enter');
+                    hovered = true;
+                    //this.setState({opacity: 0.5})
+                };
+
+                const mouseLeave = () => {
+                    console.log('mouse leave');
+                    hovered = false;
+                    //this.setState({opacity: 1})
+                };
+                const val = item.string,
+                    valKey = item.filterName,
+                    id = item.id,
+                    icon = item.awesomeIcon,
+                    filter = item.filterName,
+                    onStateItem = chosenFilter === filter ? 'selected' : '',
+                    hoveredItem = hovered ? 'hovered' : '';
+                return(
+                    <Fragment key={index}>
+                        <li className={`filter-option ${onStateItem} ${hoveredItem}`} value={valKey}
+                            onClick={() => choose_filter(filter)}
+                        >
+                            <div className="filter-name">
+                                {val}
+                            </div>
+                            <div className="filter-icon-wrp">
+                                <i className={icon}></i>
+                            </div>
+                            <div className="current-value">
+                                {(theStlObj && keysOfFilters) && theStlObj[keysOfFilters[index]]}
+                            </div>
+                        </li>
+{/*
+                        <i class="far fa-user"></i>
+                        <i class="fal fa-user"></i>
+                        <i class="fab fa-github-square"></i>
+*/}
+
+                    </Fragment>
+                )})}
+        </ul>
     </Fragment>
     )
 };
