@@ -89,10 +89,10 @@ const Slider = ({filtersData,
     ;
     return (
 
-        <div className={`label-wrp ${string}-wrp`}>
-            <label htmlFor={string}>
+        <div className={`inputs-wrp ${string}-wrp`}>
+{/*            <label htmlFor={string}>
                 {label}
-            </label>
+            </label>*/}
 
             {switchInputMode}
         </div>

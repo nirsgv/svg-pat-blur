@@ -47,16 +47,27 @@ const App = (props) => {
             <aside id="quanity-control-wrp">
                 <LayerQuanityControl />
             </aside>
-            <section id="input-wrp">
-                <Slider id="slider-wrp"/>
-                <Incrementor id="incrementor-wrp"/>
-                <DigitIncrementor id="digit-incrementor-wrp"
-                                  chosenFilter={chosenFilter}
-                                  chosenLayerId={chosenLayerId}
-                                  chosenLayerIdx={chosenLayerIdxe}
-                                  filtersData={filtersData}
-                                  layers={layers}
-                />
+            <section id="inputs-wrp">
+                <div className="inputs-row first label-and-value-row">
+                    <div id="slider-label-wrp">
+                        <label htmlFor={chosenFilter}>
+                            {chosenFilter}
+                        </label>
+                    </div>
+                    <DigitIncrementor id="digit-incrementor-wrp"
+                                      chosenFilter={chosenFilter}
+                                      chosenLayerId={chosenLayerId}
+                                      chosenLayerIdx={chosenLayerIdxe}
+                                      filtersData={filtersData}
+                                      layers={layers}
+                    />
+                </div>
+                <div className="inputs-row second buttons-row">
+                    <Incrementor id="incrementor-wrp"/>
+                </div>
+                <div className="inputs-row third slider-row">
+                    <Slider id="slider-wrp"/>
+                </div>
             </section>
             <aside id="filter-select-wrp">
                 <ChooseFilter />

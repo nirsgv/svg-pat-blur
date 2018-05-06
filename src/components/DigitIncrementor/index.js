@@ -20,7 +20,7 @@ const DigitIncrementor = ({
 
     return (
         <div className={`digit-incrementor-wrp ${string}-wrp`}>
-            <input type="number" name="points" step={step} value={theVal}/>
+            <input type="text" name="points" id="label-incrementor" step={step} value={theVal}/>
 {/*
             <input type="submit" />
 */}
